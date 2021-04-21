@@ -28,6 +28,9 @@ public class DistractionMove : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        activated = false;
+        if (collision.gameObject.tag == "wall")
+        {
+            activated = false;
+        }
     }
 }
