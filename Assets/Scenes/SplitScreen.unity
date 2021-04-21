@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 232932790}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 799210778}
   - component: {fileID: 799210777}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Ai
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -407,6 +407,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dest: {fileID: 0}
   agent: {fileID: 0}
+  audioDetection: {fileID: 978195873}
+  viewDetection: {fileID: 1189787321}
 --- !u!195 &799210778
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -514,6 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 978195871}
   - component: {fileID: 978195872}
+  - component: {fileID: 978195873}
   m_Layer: 0
   m_Name: AudioCone
   m_TagString: Untagged
@@ -543,11 +546,24 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978195870}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &978195873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978195870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283a6d14e85ec4f4196f25abcc739539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeardObjects: []
 --- !u!1 &1039423273
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +581,7 @@ GameObject:
   - component: {fileID: 1039423280}
   m_Layer: 0
   m_Name: Camera2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -723,6 +739,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1189787319}
+  - component: {fileID: 1189787320}
+  - component: {fileID: 1189787321}
   m_Layer: 0
   m_Name: ViewCone
   m_TagString: Untagged
@@ -739,11 +757,38 @@ Transform:
   m_GameObject: {fileID: 1189787318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 799210776}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1189787320
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189787318}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2934717439318261032, guid: 3574e99f045b83f4caaf084c6dcb8da1, type: 3}
+--- !u!114 &1189787321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189787318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330443026f17d9c4a9fea07deb49db15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SightedObjects: []
 --- !u!1 &1356813009
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +803,7 @@ GameObject:
   - component: {fileID: 1356813011}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

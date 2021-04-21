@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class AudioDetection : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<GameObject> HeardObjects;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        HeardObjects.Add(other.gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        HeardObjects.Remove(other.gameObject);
     }
 }

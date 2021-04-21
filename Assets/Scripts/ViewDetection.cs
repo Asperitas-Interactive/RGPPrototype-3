@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ViewDetection : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<GameObject> SightedObjects;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        SightedObjects.Add(other.gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        SightedObjects.Remove(other.gameObject);
     }
 }

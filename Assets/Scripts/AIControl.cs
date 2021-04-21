@@ -19,11 +19,20 @@ public class AIControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
+        for (int i = 0;  i < audioDetection.HeardObjects.Count; i++)
+        {
+            if(audioDetection.HeardObjects[i].tag == "Player")
+            {
+                Debug.Log("noted");
+            }
+        }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("ah");
+        for(int i = 0; i < viewDetection.SightedObjects.Count; i++)
+        {
+            if (audioDetection.HeardObjects[i].tag == "Player")
+            {
+                Debug.Log("On sight");
+            }
+        }
     }
 }
