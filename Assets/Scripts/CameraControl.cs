@@ -7,6 +7,8 @@ public class CameraControl : MonoBehaviour
     [SerializeField]
     private float sensitivity = 100f;
 
+    private float xRot = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
