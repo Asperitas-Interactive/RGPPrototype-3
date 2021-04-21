@@ -40,9 +40,17 @@ public class sniperCamera : MonoBehaviour
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0.0f)
         {
-            if(transform.position.z > -10f)
+            if(transform.position.z < -10f)
             {
-                transform.Translate(new Vector3(0f, 0f,  2.0f * Time.deltaTime));
+                transform.position = (new Vector3(transform.position.x, transform.position.y, transform.position.z +  500.0f * Time.deltaTime));
+            }
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0.0f)
+        {
+            if (transform.position.z > -45f)
+            {
+                transform.position = (new Vector3(transform.position.x, transform.position.y, transform.position.z - 500.0f * Time.deltaTime));
             }
         }
 
