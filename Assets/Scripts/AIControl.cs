@@ -2,18 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.SceneManagement;
 public class AIControl : MonoBehaviour
 {
     public GameObject dest;
     public NavMeshAgent agent;
     public AudioDetection audioDetection;
     public ViewDetection viewDetection;
+    Vector3 defaultPos;
+    public float patrolDistance= 2.0f;
+    enum State
+    {
+        follow,
+        patrol,
+    };
+
+    State state = State.patrol;
 
     // Start is called before the first frame update
     void Start()
     {
+        defaultPos = new Vector3();
+        defaultPos = transform.position;
         agent = gameObject.GetComponent<NavMeshAgent>();
+        agent.SetDestination(transform.forward * patrolDistance);
     }
 
     // Update is called once per frame
@@ -23,7 +35,7 @@ public class AIControl : MonoBehaviour
         {
             if(audioDetection.HeardObjects[i].tag == "Player")
             {
-                dest = audioDetection.HeardObjects[i];
+               // dest = audioDetection.HeardObjects[i];
             }
         }
 
@@ -37,8 +49,23 @@ public class AIControl : MonoBehaviour
 
         if (dest != null)
         {
-            agent.SetDestination(dest.transform.position);
+        //    agent.SetDestination(dest.transform.position);
         }
 
+        if (agent.remainingDistance < 0.1f)
+        {
+            agent.transform.Rotate(0f, 180f, 0f);
+            agent.SetDestination(transform.forward * patrolDistance);
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene(1);
+        }
+        
     }
 }

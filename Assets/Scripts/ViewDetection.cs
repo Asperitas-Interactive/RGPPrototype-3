@@ -14,7 +14,6 @@ public class ViewDetection : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         SightedObjects.Add(other.gameObject);
-        SightedObjects.Add(other.gameObject);
     }
 
     private void OnTriggerExit(Collider other)
