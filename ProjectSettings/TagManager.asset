@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - AudioCone
+  - Diversion
   layers:
   - Default
   - TransparentFX

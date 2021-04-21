@@ -31,4 +31,13 @@ public class PlayerControl : MonoBehaviour
 
         controller.Move(Velocity * Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other);
+        if(other.gameObject.GetComponent<DistractionMove>() != null)
+        {
+            other.gameObject.GetComponent<DistractionMove>().ActivateDistraction();
+        }
+    }
 }
