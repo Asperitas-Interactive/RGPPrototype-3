@@ -7,14 +7,20 @@ public class sniperCamera : MonoBehaviour
     [SerializeField]
     private float sensitivity = 100f;
 
-
+    Vector3 defaultPos;
     float xRot = 0f;
     float yRot = 0f;
 
+    public float zoomDistance = 30.0f;
+
+    float currZoom = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        defaultPos = new Vector3();
+
+        defaultPos = transform.position;
         Cursor.lockState = CursorLockMode.Locked;
         transform.Rotate(0.0f, 0.0f, 0.0f);
     }
@@ -40,32 +46,55 @@ public class sniperCamera : MonoBehaviour
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0.0f)
         {
-            if(transform.position.z < -10f)
+            if (GetComponent<Camera>().fieldOfView > 6)
+
             {
-                transform.position = (new Vector3(transform.position.x, transform.position.y, transform.position.z +  500.0f * Time.deltaTime));
+                GetComponent<Camera>().fieldOfView -= 200.0f * Time.deltaTime;
+
             }
+            else
+            {
+                GetComponent<Camera>().fieldOfView = 6;
+
+            }
+            
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0.0f)
         {
-            if (transform.position.z > -45f)
+            if (GetComponent<Camera>().fieldOfView < 60)
+
             {
-                transform.position = (new Vector3(transform.position.x, transform.position.y, transform.position.z - 500.0f * Time.deltaTime));
+                GetComponent<Camera>().fieldOfView += 200.0f * Time.deltaTime;
+
+            }
+            else
+            {
+                GetComponent<Camera>().fieldOfView = 60;
+
             }
         }
+
+
 
         if (Input.GetButtonDown("Fire1"))
         {
             RaycastHit hit;
-            Vector3 rayOrigin = GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+            Vector3 rayOrigin =transform.GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
 
             Physics.Raycast(rayOrigin, transform.forward, out hit, 1000);
 
             //Debug.Log("fire");
-            if(hit.collider.CompareTag("Enemy"))
+            if (hit.collider.isTrigger)
+            {
+                hit.collider.gameObject.GetComponent<AudioDetection>().hasHeard = true;
+                Physics.Raycast(hit.point, transform.forward, out hit, 100);
+            }
+            if (hit.collider.CompareTag("Enemy"))
             {
                 Destroy(hit.collider.gameObject);
             }
+           
         }
 
     }
