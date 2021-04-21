@@ -23,7 +23,7 @@ public class AIControl : MonoBehaviour
         {
             if(audioDetection.HeardObjects[i].tag == "Player")
             {
-                Debug.Log("noted");
+                dest = audioDetection.HeardObjects[i];
             }
         }
 
@@ -34,5 +34,11 @@ public class AIControl : MonoBehaviour
                 Debug.Log("On sight");
             }
         }
+
+        if (dest != null)
+        {
+            agent.SetDestination(dest.transform.position);
+        }
+
     }
 }
