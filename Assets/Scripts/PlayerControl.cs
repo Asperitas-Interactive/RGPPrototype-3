@@ -34,6 +34,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other);
         if(other.gameObject.GetComponent<DistractionMove>() != null)
         {
             other.gameObject.GetComponent<DistractionMove>().ActivateDistraction();
