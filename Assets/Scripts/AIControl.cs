@@ -10,7 +10,7 @@ public class AIControl : MonoBehaviour
     public AudioDetection audioDetection;
     public ViewDetection viewDetection;
     Vector3 defaultPos;
-    public float patrolDistance= 5.0f;
+    public float patrolDistance= 2.0f;
     enum State
     {
         follow,
