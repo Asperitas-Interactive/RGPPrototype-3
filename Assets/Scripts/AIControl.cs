@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.SceneManagement;
 public class AIControl : MonoBehaviour
 {
     public GameObject dest;
@@ -57,5 +57,15 @@ public class AIControl : MonoBehaviour
             agent.transform.Rotate(0f, 180f, 0f);
             agent.SetDestination(transform.forward * patrolDistance);
         }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene(1);
+        }
+        
     }
 }
