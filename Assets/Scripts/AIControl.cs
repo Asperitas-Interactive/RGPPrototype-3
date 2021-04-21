@@ -7,6 +7,9 @@ public class AIControl : MonoBehaviour
 {
     public GameObject dest;
     public NavMeshAgent agent;
+    public AudioDetection audioDetection;
+    public ViewDetection viewDetection;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +19,11 @@ public class AIControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("ah");
     }
 }
