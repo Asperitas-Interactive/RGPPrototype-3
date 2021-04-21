@@ -25,4 +25,9 @@ public class DistractionMove : MonoBehaviour
         activated = true;
         Debug.Log("ah");
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        activated = false;
+    }
 }
