@@ -9,6 +9,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     float speed, gravity;
 
+    private Vector3 Velocity = new Vector3(0.0f, 0.0f, 0.0f);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +26,9 @@ public class PlayerControl : MonoBehaviour
         Vector3 movement = transform.right * velX + transform.forward * velZ;
 
         controller.Move(movement * speed * Time.deltaTime);
+
+        Velocity.y += gravity * Time.deltaTime;
+
+        controller.Move(Velocity * Time.deltaTime);
     }
 }
