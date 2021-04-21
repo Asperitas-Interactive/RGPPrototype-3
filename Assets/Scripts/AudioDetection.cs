@@ -10,8 +10,6 @@ public class AudioDetection : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         HeardObjects.Add(other.gameObject);
-
-        
     }
 
     private void OnTriggerExit(Collider other)

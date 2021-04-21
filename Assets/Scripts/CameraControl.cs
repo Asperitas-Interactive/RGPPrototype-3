@@ -18,14 +18,14 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q))
         {
-            transform.Rotate(0.0f, -45.0f, 0.0f, Space.Self);
+            transform.Rotate(0.0f, -45.0f * Time.deltaTime, 0.0f, Space.Self);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
-            transform.Rotate(0.0f, 45.0f, 0.0f, Space.Self);
+            transform.Rotate(0.0f, 45.0f * Time.deltaTime, 0.0f, Space.Self);
         }
     }
 }

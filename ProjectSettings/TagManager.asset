@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - AudioCone
+  - Diversion
   layers:
   - Default
   - TransparentFX
