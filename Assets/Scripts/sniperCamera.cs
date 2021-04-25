@@ -11,6 +11,9 @@ public class sniperCamera : MonoBehaviour
     float xRot = 0f;
     float yRot = 0f;
 
+    [SerializeField]
+    private LayerMask layerIgnore;
+
     public float zoomDistance = 30.0f;
 
     float currZoom = 0.0f;
@@ -75,6 +78,21 @@ public class sniperCamera : MonoBehaviour
             }
         }
 
+        if (Input.GetButtonDown("SniperLeft"))
+        {
+            if(transform.position.z > -15.0f)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 20.0f);
+            }
+        }
+
+        if (Input.GetButtonDown("SniperRight"))
+        {
+            if (transform.position.z < 25.0f)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 20.0f);
+            }
+        }
 
 
         if (Input.GetButtonDown("Fire1"))
@@ -88,7 +106,7 @@ public class sniperCamera : MonoBehaviour
             Debug.DrawRay(transform.position, forward, Color.green);
 
             //Debug.Log("fire");
-            if(Physics.Raycast(rayOrigin, transform.forward, out hit, 1000))
+            if(Physics.Raycast(rayOrigin, transform.forward, out hit, 1000, ~layerIgnore))
             if (hit.collider.isTrigger)
             {
                 hit.collider.gameObject.GetComponent<AudioDetection>().hasHeard = true;
@@ -98,6 +116,8 @@ public class sniperCamera : MonoBehaviour
             {
                 Destroy(hit.collider.gameObject);
             }
+
+            Debug.Log(hit.collider.gameObject);
            
         }
 
