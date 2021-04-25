@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5773,11 +5773,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2279969675643533256, guid: cd3fe1c9101b3f346ac46739b2f7dfa7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.58
+      value: 44.5
       objectReference: {fileID: 0}
     - target: {fileID: 2279969675643533256, guid: cd3fe1c9101b3f346ac46739b2f7dfa7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.95
+      value: 36.2
       objectReference: {fileID: 0}
     - target: {fileID: 2279969675643533256, guid: cd3fe1c9101b3f346ac46739b2f7dfa7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5830,7 +5830,11 @@ PrefabInstance:
     - target: {fileID: 2279969676077939108, guid: cd3fe1c9101b3f346ac46739b2f7dfa7, type: 3}
       propertyPath: reticle
       value: 
-      objectReference: {fileID: 1128360990}
+      objectReference: {fileID: 1648705840}
+    - target: {fileID: 2279969676077939108, guid: cd3fe1c9101b3f346ac46739b2f7dfa7, type: 3}
+      propertyPath: zoomDistance
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd3fe1c9101b3f346ac46739b2f7dfa7, type: 3}
 --- !u!20 &1077659107 stripped
@@ -8355,6 +8359,11 @@ Transform:
   m_Father: {fileID: 1141165048}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!224 &1648705840 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7455944195594548881, guid: bbb8eb51cd65b99458e3a349f451cee6, type: 3}
+  m_PrefabInstance: {fileID: 341134708}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1680176151 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5475338550468380964, guid: 645d40d5122fab94eb550354cf9b7628, type: 3}
@@ -9702,7 +9711,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1106bac3b374b474cba01d3fe51b1446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transformOverride: {x: 0, y: 0, z: 0}
 --- !u!1001 &1943987275
 PrefabInstance:
   m_ObjectHideFlags: 0

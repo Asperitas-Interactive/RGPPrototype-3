@@ -164,7 +164,7 @@ public class sniperCamera : MonoBehaviour
                     Debug.DrawRay(transform.position, forward, Color.green);
 
                     Debug.Log("fire");
-                    if (Physics.Raycast(rayOrigin, transform.forward, out hit, 1000, ~layerIgnore))
+                    if (Physics.Raycast(rayOrigin, transform.forward, out hit, 10000, ~layerIgnore))
                     {
                         if (hit.collider.isTrigger)
                         {
