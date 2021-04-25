@@ -23,6 +23,8 @@ public class sniperCamera : MonoBehaviour
     [SerializeField]
     private int bulletCount = 8;
 
+    private float reloadTime = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +50,8 @@ public class sniperCamera : MonoBehaviour
         xRot = Mathf.Clamp(xRot, -45.0f, 45.0f);
 
         transform.eulerAngles = new Vector3(xRot, yRot, 0.0f);
+
+        reloadTime -= Time.deltaTime;
 
        // Debug.Log(mouseX);
 
@@ -105,28 +109,30 @@ public class sniperCamera : MonoBehaviour
         {
             if (bulletCount > 0)
             {
-                RaycastHit hit;
-                Vector3 rayOrigin = transform.GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
-
-                Vector3 forward = transform.TransformDirection(Vector3.forward) * 10000;
-                Debug.DrawRay(transform.position, forward, Color.green);
-
-                //Debug.Log("fire");
-                if (Physics.Raycast(rayOrigin, transform.forward, out hit, 1000, ~layerIgnore))
-                    if (hit.collider.isTrigger)
-                    {
-                        hit.collider.gameObject.GetComponent<AudioDetection>().hasHeard = true;
-                        Physics.Raycast(hit.point, transform.forward, out hit, 100);
-                    }
-                if (hit.collider.CompareTag("Enemy"))
+                if (reloadTime <= 0.0f)
                 {
-                    Destroy(hit.collider.gameObject);
-                }
+                    RaycastHit hit;
+                    Vector3 rayOrigin = transform.GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
 
-                bulletCount--;
-            } else
-            {
-                Debug.Log("Outta Bullets");
+                    Vector3 forward = transform.TransformDirection(Vector3.forward) * 10000;
+                    Debug.DrawRay(transform.position, forward, Color.green);
+
+                    Debug.Log("fire");
+                    if (Physics.Raycast(rayOrigin, transform.forward, out hit, 1000, ~layerIgnore))
+                        if (hit.collider.isTrigger)
+                        {
+                            hit.collider.gameObject.GetComponent<AudioDetection>().hasHeard = true;
+                            Physics.Raycast(hit.point, transform.forward, out hit, 100);
+                        }
+                    if (hit.collider.CompareTag("Enemy"))
+                    {
+                        Destroy(hit.collider.gameObject);
+                    }
+
+                    bulletCount--;
+                    GetComponent<Camera>().fieldOfView = 60;
+                    reloadTime = 2.0f;
+                }
             }
         }
 
