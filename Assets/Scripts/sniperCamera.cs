@@ -25,6 +25,22 @@ public class sniperCamera : MonoBehaviour
 
     private float reloadTime = 0.0f;
 
+    [SerializeField]
+    private RectTransform reticle;
+
+    //Idle Sway Variable
+    //Used code from:
+    //https://forum.unity.com/threads/making-an-object-move-in-a-figure-8-programatically.38007/
+    private float speed = 1.0f;
+    private float xScale = 1.0f;
+    private float yScale = 1.0f;
+ 
+    private Vector3 pivot;
+    private Vector3 pivotOffset;
+    private float phase;
+    private bool invert = false;
+    private float PI2 = Mathf.PI* 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +50,8 @@ public class sniperCamera : MonoBehaviour
         lRender = gameObject.GetComponent<LineRenderer>();
         Cursor.lockState = CursorLockMode.Locked;
         transform.Rotate(0.0f, 0.0f, 0.0f);
+
+        pivot = reticle.localPosition;
     }
 
     // Update is called once per frame
@@ -41,8 +59,6 @@ public class sniperCamera : MonoBehaviour
     {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
-
-
 
         xRot -= mouseY;
         yRot += mouseX;
@@ -103,6 +119,20 @@ public class sniperCamera : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 20.0f);
             }
         }
+
+        //Idle Sway
+        pivotOffset = Vector3.up * 2 * yScale;
+
+        phase += speed * Time.deltaTime;
+        if (phase > PI2)
+        {
+            invert = !invert;
+            phase -= PI2;
+        }
+        if (phase < 0) phase += PI2;
+
+        reticle.localPosition = pivot + (invert ? pivotOffset : Vector3.zero);
+        reticle.localPosition += new Vector3(reticle.localPosition.x + Mathf.Sin(phase) * xScale, reticle.localPosition.y + Mathf.Cos(phase) * (invert ? -1 : 1) * yScale, 0.0f);
 
 
         if (Input.GetButtonDown("Fire1"))
