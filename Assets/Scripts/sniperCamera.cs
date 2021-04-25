@@ -41,6 +41,8 @@ public class sniperCamera : MonoBehaviour
     private bool invert = false;
     private float PI2 = Mathf.PI* 2;
 
+    bool resetRecoil = false;
+    float recoilTimer = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +54,13 @@ public class sniperCamera : MonoBehaviour
         transform.Rotate(0.0f, 0.0f, 0.0f);
 
         pivot = reticle.localPosition;
+    }
+
+    void recoil()
+    {
+        transform.position += -transform.forward * 4.0f;
+        recoilTimer = 0.2f;
+        resetRecoil = true;
     }
 
     // Update is called once per frame
@@ -68,8 +77,15 @@ public class sniperCamera : MonoBehaviour
         transform.eulerAngles = new Vector3(xRot, yRot, 0.0f);
 
         reloadTime -= Time.deltaTime;
+        recoilTimer -= Time.deltaTime;
 
-       // Debug.Log(mouseX);
+        if(resetRecoil && recoilTimer < 0.0f)
+        {
+            transform.position -= -transform.forward * 4.0f;
+            resetRecoil = false;
+        }
+
+        // Debug.Log(mouseX);
 
         // transform.Rotate(Vector3.up * mouseX);
 
@@ -149,19 +165,23 @@ public class sniperCamera : MonoBehaviour
 
                     Debug.Log("fire");
                     if (Physics.Raycast(rayOrigin, transform.forward, out hit, 1000, ~layerIgnore))
+                    {
                         if (hit.collider.isTrigger)
                         {
                             hit.collider.gameObject.GetComponent<AudioDetection>().hasHeard = true;
                             Physics.Raycast(hit.point, transform.forward, out hit, 100);
                         }
-                    if (hit.collider.CompareTag("Enemy"))
-                    {
-                        Destroy(hit.collider.gameObject);
+                        if (hit.collider.CompareTag("Enemy"))
+                        {
+                            Destroy(hit.collider.gameObject);
+                        }
                     }
 
                     bulletCount--;
-                    GetComponent<Camera>().fieldOfView = 60;
+                    //GetComponent<Camera>().fieldOfView = 60;
                     reloadTime = 2.0f;
+
+                    recoil();
                 }
             }
         }
