@@ -107,9 +107,9 @@ public class sniperCamera : MonoBehaviour
 
             Vector3 forward = transform.TransformDirection(Vector3.forward) * 10000;
             Debug.DrawRay(transform.position, forward, Color.green);
-            Vector3 RayDisjoint = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
-            lRender.SetPosition(0, RayDisjoint);
-            lRender.SetPosition(1, forward);
+            //Vector3 RayDisjoint = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
+            //lRender.SetPosition(0, RayDisjoint);
+            //lRender.SetPosition(1, forward);
 
             //Debug.Log("fire");
             if(Physics.Raycast(rayOrigin, transform.forward, out hit, 1000, ~layerIgnore))
@@ -125,6 +125,14 @@ public class sniperCamera : MonoBehaviour
 
             Debug.Log(hit.collider.gameObject);
            
+        }
+
+        if (Input.GetButton("TargetReticle"))
+        {
+            Vector3 forward = transform.TransformDirection(Vector3.forward) * 10000;
+            Vector3 RayDisjoint = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
+            lRender.SetPosition(0, RayDisjoint);
+            lRender.SetPosition(1, forward);
         }
 
     }
