@@ -82,9 +82,13 @@ public class sniperCamera : MonoBehaviour
             RaycastHit hit;
             Vector3 rayOrigin =transform.GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
 
-            Physics.Raycast(rayOrigin, transform.forward, out hit, 1000);
+            
+
+            Vector3 forward = transform.TransformDirection(Vector3.forward) * 10000;
+            Debug.DrawRay(transform.position, forward, Color.green);
 
             //Debug.Log("fire");
+            if(Physics.Raycast(rayOrigin, transform.forward, out hit, 1000))
             if (hit.collider.isTrigger)
             {
                 hit.collider.gameObject.GetComponent<AudioDetection>().hasHeard = true;
