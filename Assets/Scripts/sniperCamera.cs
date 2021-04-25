@@ -14,6 +14,8 @@ public class sniperCamera : MonoBehaviour
     [SerializeField]
     private LayerMask layerIgnore;
 
+    private LineRenderer lRender;
+
     public float zoomDistance = 30.0f;
 
     float currZoom = 0.0f;
@@ -24,6 +26,7 @@ public class sniperCamera : MonoBehaviour
         defaultPos = new Vector3();
 
         defaultPos = transform.position;
+        lRender = gameObject.GetComponent<LineRenderer>();
         Cursor.lockState = CursorLockMode.Locked;
         transform.Rotate(0.0f, 0.0f, 0.0f);
     }
@@ -104,6 +107,9 @@ public class sniperCamera : MonoBehaviour
 
             Vector3 forward = transform.TransformDirection(Vector3.forward) * 10000;
             Debug.DrawRay(transform.position, forward, Color.green);
+            Vector3 RayDisjoint = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
+            lRender.SetPosition(0, RayDisjoint);
+            lRender.SetPosition(1, forward);
 
             //Debug.Log("fire");
             if(Physics.Raycast(rayOrigin, transform.forward, out hit, 1000, ~layerIgnore))
