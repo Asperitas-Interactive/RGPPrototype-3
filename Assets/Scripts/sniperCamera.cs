@@ -31,7 +31,7 @@ public class sniperCamera : MonoBehaviour
     //Idle Sway Variable
     //Used code from:
     //https://forum.unity.com/threads/making-an-object-move-in-a-figure-8-programatically.38007/
-    private float speed = 1.0f;
+    /*private float speed = 1.0f;
     private float xScale = 1.0f;
     private float yScale = 1.0f;
  
@@ -39,7 +39,7 @@ public class sniperCamera : MonoBehaviour
     private Vector3 pivotOffset;
     private float phase;
     private bool invert = false;
-    private float PI2 = Mathf.PI* 2;
+    private float PI2 = Mathf.PI* 2;*/
 
     bool resetRecoil = false;
     float recoilTimer = 0.0f;
@@ -52,7 +52,7 @@ public class sniperCamera : MonoBehaviour
         lRender = gameObject.GetComponent<LineRenderer>();
         Cursor.lockState = CursorLockMode.Locked;
 
-        pivot = reticle.localPosition;
+        //pivot = reticle.localPosition;
     }
 
     void recoil()
@@ -137,7 +137,7 @@ public class sniperCamera : MonoBehaviour
         }
 
         //Idle Sway
-        pivotOffset = Vector3.up * 2 * yScale;
+        /*pivotOffset = Vector3.up * 2 * yScale;
 
         phase += speed * Time.deltaTime;
         if (phase > PI2)
@@ -148,7 +148,7 @@ public class sniperCamera : MonoBehaviour
         if (phase < 0) phase += PI2;
 
         reticle.localPosition = pivot + (invert ? pivotOffset : Vector3.zero);
-        reticle.localPosition += new Vector3(reticle.localPosition.x + Mathf.Sin(phase) * xScale, reticle.localPosition.y + Mathf.Cos(phase) * (invert ? -1 : 1) * yScale, 0.0f);
+        reticle.localPosition += new Vector3(reticle.localPosition.x + Mathf.Sin(phase) * xScale, reticle.localPosition.y + Mathf.Cos(phase) * (invert ? -1 : 1) * yScale, 0.0f);*/
 
 
         if (Input.GetButtonDown("Fire1"))
