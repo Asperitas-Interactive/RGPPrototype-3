@@ -8,8 +8,8 @@ public class sniperCamera : MonoBehaviour
     private float sensitivity = 100f;
 
     Vector3 defaultPos;
-    float xRot = 0f;
-    float yRot = -90f;
+    float xRot = -20.0f;
+    float yRot = -90.0f;
 
     [SerializeField]
     private LayerMask layerIgnore;
