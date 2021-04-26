@@ -177,6 +177,8 @@ public class sniperCamera : MonoBehaviour
                         }
                     }
 
+                    Debug.Log(hit.collider.gameObject);
+
                     bulletCount--;
                     //GetComponent<Camera>().fieldOfView = 60;
                     reloadTime = 2.0f;
