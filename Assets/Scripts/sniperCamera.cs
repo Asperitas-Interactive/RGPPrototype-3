@@ -9,7 +9,7 @@ public class sniperCamera : MonoBehaviour
 
     Vector3 defaultPos;
     float xRot = 0f;
-    float yRot = 0f;
+    float yRot = -90f;
 
     [SerializeField]
     private LayerMask layerIgnore;
@@ -51,7 +51,6 @@ public class sniperCamera : MonoBehaviour
         defaultPos = transform.position;
         lRender = gameObject.GetComponent<LineRenderer>();
         Cursor.lockState = CursorLockMode.Locked;
-        transform.Rotate(0.0f, 0.0f, 0.0f);
 
         pivot = reticle.localPosition;
     }
@@ -73,6 +72,7 @@ public class sniperCamera : MonoBehaviour
         yRot += mouseX;
 
         xRot = Mathf.Clamp(xRot, -45.0f, 45.0f);
+        yRot = Mathf.Clamp(yRot, -180, 0.0f);
 
         transform.eulerAngles = new Vector3(xRot, yRot, 0.0f);
 
