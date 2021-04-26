@@ -8,6 +8,7 @@ TagManager:
   - AudioCone
   - Diversion
   - Wall
+  - AmmoIcons
   layers:
   - Default
   - TransparentFX

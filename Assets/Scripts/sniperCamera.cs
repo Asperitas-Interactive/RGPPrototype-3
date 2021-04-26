@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class sniperCamera : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class sniperCamera : MonoBehaviour
     [SerializeField]
     private RectTransform reticle;
 
+    [SerializeField]
+    private GameObject[] ammoUI;
+
     //Idle Sway Variable
     //Used code from:
     //https://forum.unity.com/threads/making-an-object-move-in-a-figure-8-programatically.38007/
@@ -53,6 +57,7 @@ public class sniperCamera : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         //pivot = reticle.localPosition;
+        ammoUI = GameObject.FindGameObjectsWithTag("AmmoIcons");
     }
 
     void recoil()
@@ -179,6 +184,7 @@ public class sniperCamera : MonoBehaviour
 
                     Debug.Log(hit.collider.gameObject);
 
+                    ammoUI[bulletCount - 1].GetComponent<Image>().enabled = false;
                     bulletCount--;
                     //GetComponent<Camera>().fieldOfView = 60;
                     reloadTime = 2.0f;
