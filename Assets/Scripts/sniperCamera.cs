@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class sniperCamera : MonoBehaviour
 {
+    public AudioSource GunShot;
+    public AudioSource Scope;
+    public AudioSource Reload;
+
     [SerializeField]
     private float sensitivity = 100f;
 
@@ -31,6 +35,8 @@ public class sniperCamera : MonoBehaviour
 
     [SerializeField]
     private GameObject[] ammoUI;
+
+    private bool playReloadSound = false;
 
     //Idle Sway Variable
     //Used code from:
@@ -107,7 +113,11 @@ public class sniperCamera : MonoBehaviour
                 GetComponent<Camera>().fieldOfView = 6;
 
             }
-            
+
+            if (Scope.isPlaying == false)
+            {
+                Scope.Play();
+            }
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0.0f)
@@ -122,6 +132,10 @@ public class sniperCamera : MonoBehaviour
             {
                 GetComponent<Camera>().fieldOfView = 60;
 
+            }
+            if (Scope.isPlaying == false)
+            {
+                Scope.Play();
             }
         }
 
@@ -155,6 +169,12 @@ public class sniperCamera : MonoBehaviour
         reticle.localPosition = pivot + (invert ? pivotOffset : Vector3.zero);
         reticle.localPosition += new Vector3(reticle.localPosition.x + Mathf.Sin(phase) * xScale, reticle.localPosition.y + Mathf.Cos(phase) * (invert ? -1 : 1) * yScale, 0.0f);*/
 
+        if (reloadTime <= 0.5f && playReloadSound == true)
+        {
+            Reload.Play();
+            playReloadSound = false;
+        }
+
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -184,11 +204,13 @@ public class sniperCamera : MonoBehaviour
 
                     Debug.Log(hit.collider.gameObject);
 
+                    GunShot.Play();
+
                     ammoUI[bulletCount - 1].GetComponent<Image>().enabled = false;
                     bulletCount--;
                     //GetComponent<Camera>().fieldOfView = 60;
                     reloadTime = 2.0f;
-
+                    playReloadSound = true;
                     recoil();
                 }
             }
