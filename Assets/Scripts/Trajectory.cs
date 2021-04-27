@@ -12,6 +12,8 @@ public class Trajectory : MonoBehaviour
    public GameObject CloneBase;
    GameObject clone;
    public LineRenderer lr;
+
+    Vector3 force = new Vector3(10.0f, 1000.0f, 0.0f);
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +24,15 @@ public class Trajectory : MonoBehaviour
         CurrentPhysScene = CurrentScene.GetPhysicsScene();
         Physics.autoSimulation = false;
 
+        Debug.Log(CurrentScene.GetPhysicsScene());
 
         if (clone == null)
         {
             Debug.Log("ah");
             clone = Instantiate(CloneBase.gameObject);
             SceneManager.MoveGameObjectToScene(clone, PredictionScene);
-            //clone.GetComponent<Rigidbody>().useGravity = false;
+            clone.GetComponent<Rigidbody>().useGravity = false;
+            clone.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
         }
 
         lr = GetComponent<LineRenderer>();
@@ -42,12 +46,9 @@ public class Trajectory : MonoBehaviour
             CurrentPhysScene.Simulate(Time.fixedDeltaTime);
         }
 
-        Vector3 force = new Vector3(10.0f, 10.0f, 0.0f);
-
         int Maxiteration = 100;
 
         clone.transform.position = transform.position;
-        clone.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
 
         for (int i = 0; i < Maxiteration; i++)
         {
