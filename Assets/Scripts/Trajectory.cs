@@ -3,57 +3,125 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//This code is from https://www.youtube.com/watch?v=GLu1T5Y2SSc&t=912s
+//So we can realise proof of concept faster
+
+public struct registeredItems
+{
+    public DistractionItem real;
+    public DistractionItem hidden;
+}
+
 public class Trajectory : MonoBehaviour
 {
-   Scene PredictionScene;
-   PhysicsScene PredictionPhysScene;
-   Scene CurrentScene;
-   PhysicsScene CurrentPhysScene;
-   public GameObject CloneBase;
-   GameObject clone;
-   public LineRenderer lr;
+    public static bool held;
+    public GameObject distraction;
+    public Transform referenceDistraction;
 
-    Vector3 force = new Vector3(10.0f, 1000.0f, 0.0f);
-    // Start is called before the first frame update
-    void Start()
+    private Scene mainScene;
+    private Scene physicsScene;
+    public GameObject marker;
+    private List<GameObject> markers = new List<GameObject>();
+
+    private Dictionary<string, registeredItems> allItems = new Dictionary<string, registeredItems>();
+
+    public GameObject objectsToSpawn;
+
+    private void Start()
     {
-        CreateSceneParameters parameters = new CreateSceneParameters(LocalPhysicsMode.Physics3D);
-        PredictionScene = SceneManager.CreateScene("PhysPredict", parameters);
-        PredictionPhysScene = PredictionScene.GetPhysicsScene();
-        CurrentScene = SceneManager.GetActiveScene();
-        CurrentPhysScene = CurrentScene.GetPhysicsScene();
         Physics.autoSimulation = false;
+        mainScene = SceneManager.GetActiveScene();
+        physicsScene = SceneManager.CreateScene("PhysicsScene", new CreateSceneParameters(LocalPhysicsMode.Physics3D));
 
-        if (clone == null)
-        {
-            Debug.Log("ah");
-            clone = Instantiate(CloneBase.gameObject);
-            SceneManager.MoveGameObjectToScene(clone, PredictionScene);
-            clone.GetComponent<Rigidbody>().useGravity = false;
-            clone.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
-        }
-
-        lr = GetComponent<LineRenderer>();
-        lr.positionCount = 100;
+        PreparePhysicsScene();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (CurrentPhysScene.IsValid())
+        if (Input.GetKey(KeyCode.Space))
         {
-            CurrentPhysScene.Simulate(Time.fixedDeltaTime);
+            ShowTrajectory();
         }
 
-        int Maxiteration = 100;
+        mainScene.GetPhysicsScene().Simulate(Time.fixedDeltaTime);
+    }
 
-        clone.transform.position = transform.position;
-
-        for (int i = 0; i < Maxiteration; i++)
-        {
-           PredictionPhysScene.Simulate(Time.fixedDeltaTime);
-           lr.SetPosition(i, clone.transform.position);
+    public void RegisterDistraction(DistractionItem distraction)
+    {
+        if (!allItems.ContainsKey(distraction.gameObject.name)){
+            allItems[distraction.gameObject.name] = new registeredItems();
         }
 
-        clone.transform.position = transform.position;
+        var items = allItems[distraction.gameObject.name];
+
+        if(string.Compare(distraction.gameObject.scene.name, physicsScene.name) == 0)
+        {
+            items.hidden = distraction;
+        } else
+        {
+            items.real = distraction;
+        }
+
+        allItems[distraction.gameObject.name] = items;
+    }
+
+    public void PreparePhysicsScene()
+    {
+        SceneManager.SetActiveScene(physicsScene);
+        GameObject g = GameObject.Instantiate(objectsToSpawn);
+        g.transform.name = "ReferenceItem";
+        g.GetComponent<DistractionItem>().isReference = true;
+        Destroy(g.GetComponent<MeshRenderer>());
+
+        SceneManager.SetActiveScene(mainScene);
+    }
+
+    public void CreateMarkers()
+    {
+        foreach(var ItemType in allItems)
+        {
+            var items = ItemType.Value;
+
+            DistractionItem hidden = items.hidden;
+
+            GameObject g = GameObject.Instantiate(marker, hidden.transform.position, Quaternion.identity);
+            g.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            markers.Add(g);
+        }
+    }
+
+    public void ShowTrajectory()
+    {
+        SyncItem();
+
+        allItems["ReferenceItem"].hidden.transform.rotation = referenceDistraction.transform.rotation;
+        allItems["ReferenceItem"].hidden.GetComponent<Rigidbody>().velocity = referenceDistraction.transform.TransformDirection(Vector3.up * 15f);
+        allItems["ReferenceItem"].hidden.GetComponent<Rigidbody>().useGravity = true;
+
+        int steps = (int)(2f / Time.fixedDeltaTime);
+        for(int i = 0; i < steps; i++)
+        {
+            physicsScene.GetPhysicsScene().Simulate(Time.fixedDeltaTime);
+            CreateMarkers();
+        }
+    }
+
+    public void SyncItem()
+    {
+        foreach (var ItemType in allItems)
+        {
+            var items = ItemType.Value;
+
+            DistractionItem visual = items.real;
+            DistractionItem hidden = items.hidden;
+
+            var rb = hidden.GetComponent<Rigidbody>();
+
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+
+            hidden.transform.position = visual.transform.position;
+            hidden.transform.rotation = visual.transform.rotation;
+        }
     }
 }
