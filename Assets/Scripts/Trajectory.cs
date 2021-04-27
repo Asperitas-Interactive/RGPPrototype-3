@@ -24,8 +24,6 @@ public class Trajectory : MonoBehaviour
         CurrentPhysScene = CurrentScene.GetPhysicsScene();
         Physics.autoSimulation = false;
 
-        Debug.Log(CurrentScene.GetPhysicsScene());
-
         if (clone == null)
         {
             Debug.Log("ah");
