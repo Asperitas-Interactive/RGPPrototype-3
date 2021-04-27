@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1991,20 +1991,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7455944195594548881, guid: bbb8eb51cd65b99458e3a349f451cee6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.211442
+      value: 2.1441288
       objectReference: {fileID: 0}
     - target: {fileID: 7455944195594548881, guid: bbb8eb51cd65b99458e3a349f451cee6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.211442
+      value: 2.1441288
       objectReference: {fileID: 0}
     - target: {fileID: 7455944195594548881, guid: bbb8eb51cd65b99458e3a349f451cee6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.211442
+      value: 2.1441288
       objectReference: {fileID: 0}
     - target: {fileID: 7455944195697691761, guid: bbb8eb51cd65b99458e3a349f451cee6, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1077659107}
+    - target: {fileID: 7455944195697691762, guid: bbb8eb51cd65b99458e3a349f451cee6, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7455944195697691764, guid: bbb8eb51cd65b99458e3a349f451cee6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
