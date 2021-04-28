@@ -16,6 +16,7 @@ public class AIControl : MonoBehaviour
     {
         follow,
         patrol,
+        idle,
     };
 
     State state = State.patrol;
@@ -23,11 +24,16 @@ public class AIControl : MonoBehaviour
     float followTimer;
     public float maxFollowTimer;
 
+    float idleTimer;
+    public float[] maxIdleTimer = { 3.0f, 5.0f };
+    bool rotate = false;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+           
         defaultPos = new Vector3();
         defaultRot = new Quaternion();
         defaultRot = transform.rotation;
@@ -40,12 +46,21 @@ public class AIControl : MonoBehaviour
     void Update()
     {
         followTimer -= Time.deltaTime;
+        idleTimer -= Time.deltaTime;
 
         if(state == State.follow && followTimer < 0.0f)
         {
             state = State.patrol;
             agent.SetDestination(defaultPos);
             
+        }
+
+
+        if (state == State.idle && idleTimer < 0.0f)
+        {
+            state = State.patrol;
+           // agent.SetDestination(defaultPos);
+
         }
 
         for (int i = 0;  i < audioDetection.HeardObjects.Count; i++)
@@ -72,8 +87,15 @@ public class AIControl : MonoBehaviour
         
         if (agent.remainingDistance < 0.1f && state == State.patrol)
         {
+            if (rotate)
+            {
+                agent.transform.rotation = defaultRot;
+                rotate = false;
+            }
             agent.transform.Rotate(0f, 180f, 0f);
             agent.SetDestination((transform.forward * patrolDistance + transform.position));
+            state = State.idle;
+            idleTimer = Random.Range(maxIdleTimer[0], maxIdleTimer[1]);
         }
 
 
@@ -81,6 +103,13 @@ public class AIControl : MonoBehaviour
         {
             agent.SetDestination(followDir);
         }
+
+        if(state == State.idle)
+        {
+            agent.velocity = Vector3.zero;
+        }
+
+        transform.GetChild(2).GetComponent<Animator>().SetFloat("speed", agent.velocity.magnitude);
     }
 
 
