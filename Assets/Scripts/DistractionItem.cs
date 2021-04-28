@@ -12,7 +12,6 @@ public class DistractionItem : MonoBehaviour
         if (isReference)
         {
             var TrajectoryScript = FindObjectOfType<Trajectory>();
-            TrajectoryScript.RegisterDistraction(this);
         }
     }
 }
