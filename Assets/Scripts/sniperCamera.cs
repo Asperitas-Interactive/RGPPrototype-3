@@ -53,6 +53,10 @@ public class sniperCamera : MonoBehaviour
 
     bool resetRecoil = false;
     float recoilTimer = 0.0f;
+
+    float minRot = -180.0f;
+    float maxRot = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,7 +87,7 @@ public class sniperCamera : MonoBehaviour
         yRot += mouseX;
 
         xRot = Mathf.Clamp(xRot, -45.0f, 45.0f);
-        yRot = Mathf.Clamp(yRot, -180, 0.0f);
+        yRot = Mathf.Clamp(yRot, minRot, maxRot);
 
         transform.eulerAngles = new Vector3(xRot, yRot, 0.0f);
 
@@ -141,18 +145,18 @@ public class sniperCamera : MonoBehaviour
 
         if (Input.GetButtonDown("SniperLeft"))
         {
-            if(transform.position.z > -15.0f)
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 20.0f);
-            }
+            transform.position = new Vector3(63.5f, transform.position.y, 5.0f);
+            yRot = -90.0f;
+            minRot = -180.0f;
+            maxRot = 0.0f;
         }
 
         if (Input.GetButtonDown("SniperRight"))
         {
-            if (transform.position.z < 25.0f)
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 20.0f);
-            }
+            transform.position = new Vector3(1.5f, transform.position.y, 64.0f);
+            yRot = -180.0f;
+            minRot = -270.0f;
+            maxRot = -90.0f;
         }
 
         //Idle Sway
