@@ -14,19 +14,20 @@ public class AIControl : MonoBehaviour
     public float patrolDistance= 2.0f;
     public bool death = false;
     public float alarmTimer = 2.0f;
-    enum State
+    public enum State
     {
         follow,
         patrol,
         idle,
     };
 
-    State state = State.patrol;
-    Vector3 followDir;
+    public State state = State.patrol;
+    public Vector3 followDir;
     float followTimer;
     public float maxFollowTimer;
 
     float idleTimer;
+    bool sw = false;
     public float[] maxIdleTimer = { 3.0f, 5.0f };
     bool rotate = false;
 
@@ -63,16 +64,17 @@ public class AIControl : MonoBehaviour
         followTimer -= Time.deltaTime;
         idleTimer -= Time.deltaTime;
 
-        if(state == State.follow && followTimer < 0.0f)
+        if(state == State.follow && followTimer < 0.0f && sw)
         {
             state = State.patrol;
             agent.SetDestination(defaultPos);
-            
+            sw = false;
         }
 
 
-        if (state == State.idle && idleTimer < 0.0f)
+        if (state == State.idle && idleTimer < 0.0f && sw)
         {
+            sw = true;
             state = State.patrol;
            // agent.SetDestination(defaultPos);
 
@@ -99,22 +101,26 @@ public class AIControl : MonoBehaviour
         //    agent.SetDestination(dest.transform.position);
         }
 
-        
-        if (agent.remainingDistance < 0.1f && state == State.patrol)
+
+        if (state == State.patrol)
         {
-            if (rotate)
+            if (agent.remainingDistance < 0.1f)
             {
-                agent.transform.rotation = defaultRot;
-                rotate = false;
+                if (rotate)
+                {
+                    agent.transform.rotation = defaultRot;
+                    rotate = false;
+                }
+                agent.transform.Rotate(0f, 180f, 0f);
+                agent.SetDestination((transform.forward * patrolDistance + transform.position));
+                state = State.idle;
+                sw = true;
+                idleTimer = Random.Range(maxIdleTimer[0], maxIdleTimer[1]);
             }
-            agent.transform.Rotate(0f, 180f, 0f);
-            agent.SetDestination((transform.forward * patrolDistance + transform.position));
-            state = State.idle;
-            idleTimer = Random.Range(maxIdleTimer[0], maxIdleTimer[1]);
         }
 
 
-        else if(state == State.follow)
+        else if (state == State.follow)
         {
             agent.SetDestination(followDir);
         }
@@ -146,6 +152,7 @@ public class AIControl : MonoBehaviour
         if (other.CompareTag("Diversion"))
         {
             state = State.follow;
+            sw = true;
             followDir = other.transform.position;
             followTimer = maxFollowTimer;
         }
