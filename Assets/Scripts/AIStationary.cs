@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class AIStationary : MonoBehaviour
 {
     private GameObject target;
+    public bool death = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,11 @@ public class AIStationary : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (gameObject.tag == "Dead")
+        {
+            transform.GetChild(0).GetComponent<Animator>().SetBool("death", true);
+            return;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
