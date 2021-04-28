@@ -17,6 +17,8 @@ public class Trajectory : MonoBehaviour
 
     GameObject g;
 
+    Vector3 ogpos;
+
     private void Start()
     {
         Physics.autoSimulation = false;
@@ -28,10 +30,14 @@ public class Trajectory : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        ogpos = objectsToSpawn.transform.position;
+        if (Input.GetKey(KeyCode.Space))
         {
-            Debug.Log("ah");
+            lr.enabled = true;
             ShowTrajectory();
+        } else
+        {
+            lr.enabled = false;
         }
 
         mainScene.GetPhysicsScene().Simulate(Time.fixedDeltaTime);
@@ -43,7 +49,6 @@ public class Trajectory : MonoBehaviour
         g = GameObject.Instantiate(objectsToSpawn);
         g.transform.name = "ReferenceItem";
         Destroy(g.GetComponent<MeshRenderer>());
-
         SceneManager.SetActiveScene(mainScene);
     }
 
@@ -61,5 +66,8 @@ public class Trajectory : MonoBehaviour
             physicsScene.GetPhysicsScene().Simulate(Time.fixedDeltaTime);
             lr.SetPosition(i, g.transform.position);
         }
+
+        g.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        g.transform.position = ogpos;
     }
 }
