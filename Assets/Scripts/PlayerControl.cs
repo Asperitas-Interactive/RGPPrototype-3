@@ -38,8 +38,8 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && item != null)
         {
             item.useGravity = true;
-            item.AddForce(new Vector3(0.0f, 15.0f, 0.0f), ForceMode.Impulse);
-            item.AddForce(transform.forward * 5.0f, ForceMode.Impulse);
+            item.AddForce(new Vector3(0.0f, 5.0f, 0.0f), ForceMode.Impulse);
+            item.AddForce(transform.forward * 15.0f, ForceMode.Impulse);
             item = null;
         }
     }
