@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5849001565500103055}
   - component: {fileID: 5849001565500103154}
   - component: {fileID: 5849001565500103157}
+  - component: {fileID: 1568634888}
   m_Layer: 0
   m_Name: TestDiversion
   m_TagString: Untagged
@@ -139,3 +140,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7ede05aa046f54cb3a1314f8091051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attached: 0
+--- !u!114 &1568634888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5849001565500103052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49fdf5fa16a473b42b31d74f0c652ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creator: {fileID: 0}
+  objectsToSpawn: {fileID: 5849001565500103052}
+  lr: {fileID: 0}
+  item: {fileID: 5849001565500103157}

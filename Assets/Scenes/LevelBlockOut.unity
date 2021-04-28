@@ -620,38 +620,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e88107168bf4b3740ad006f81f29f8ff, type: 3}
---- !u!1 &34444073 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5849001565500103052, guid: e88107168bf4b3740ad006f81f29f8ff, type: 3}
-  m_PrefabInstance: {fileID: 34444072}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &34444074 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5849001565500103157, guid: e88107168bf4b3740ad006f81f29f8ff, type: 3}
-  m_PrefabInstance: {fileID: 34444072}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34444073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c7ede05aa046f54cb3a1314f8091051, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &34444075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34444073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49fdf5fa16a473b42b31d74f0c652ff6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creator: {fileID: 1835541922}
-  objectsToSpawn: {fileID: 34444073}
-  lr: {fileID: 2059477165}
-  item: {fileID: 34444074}
 --- !u!4 &34917460 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5475338550468380964, guid: 645d40d5122fab94eb550354cf9b7628, type: 3}
@@ -22007,38 +21975,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1499748835559377783, guid: ca950e48041cb9e4a9b464ab4964af89, type: 3}
---- !u!1 &1568634887 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5849001565500103052, guid: e88107168bf4b3740ad006f81f29f8ff, type: 3}
-  m_PrefabInstance: {fileID: 5849001565138245425}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1568634888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568634887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49fdf5fa16a473b42b31d74f0c652ff6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creator: {fileID: 1835541922}
-  objectsToSpawn: {fileID: 1568634887}
-  lr: {fileID: 2059477165}
-  item: {fileID: 1568634889}
---- !u!114 &1568634889 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5849001565500103157, guid: e88107168bf4b3740ad006f81f29f8ff, type: 3}
-  m_PrefabInstance: {fileID: 5849001565138245425}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568634887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c7ede05aa046f54cb3a1314f8091051, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1569572780
 GameObject:
   m_ObjectHideFlags: 0
@@ -27483,6 +27419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2059477166}
   - component: {fileID: 2059477165}
+  - component: {fileID: 2059477167}
   m_Layer: 0
   m_Name: LineBoi
   m_TagString: Untagged
@@ -27602,6 +27539,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2059477167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059477164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c54ceb9405faf34c8ef2287078cbbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trajectoryItems: []
 --- !u!1 &2062523649 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1589829383492325008, guid: 27655daf35d1592448576e711fbdcb93, type: 3}
@@ -28839,6 +28789,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1568634888, guid: e88107168bf4b3740ad006f81f29f8ff, type: 3}
+      propertyPath: lr
+      value: 
+      objectReference: {fileID: 2059477165}
+    - target: {fileID: 1568634888, guid: e88107168bf4b3740ad006f81f29f8ff, type: 3}
+      propertyPath: creator
+      value: 
+      objectReference: {fileID: 1835541922}
     - target: {fileID: 5849001565500103052, guid: e88107168bf4b3740ad006f81f29f8ff, type: 3}
       propertyPath: m_Name
       value: TestDiversion
