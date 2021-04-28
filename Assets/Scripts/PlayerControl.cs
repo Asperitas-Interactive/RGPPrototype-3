@@ -41,6 +41,7 @@ public class PlayerControl : MonoBehaviour
             item.AddForce(new Vector3(0.0f, 5.0f, 0.0f), ForceMode.Impulse);
             item.AddForce(transform.forward * 15.0f, ForceMode.Impulse);
             item.transform.SetParent(null);
+            item.GetComponent<DistractionMove>().attached = false;
             item = null;
 
         }

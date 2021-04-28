@@ -12,8 +12,12 @@ public class Trajectory : MonoBehaviour
     private Scene mainScene;
     private Scene physicsScene;
 
+    public PhysSceneCreator creator;
+
     public GameObject objectsToSpawn;
     public LineRenderer lr;
+
+    public DistractionMove item;
 
     GameObject g;
 
@@ -23,7 +27,7 @@ public class Trajectory : MonoBehaviour
     {
         Physics.autoSimulation = false;
         mainScene = SceneManager.GetActiveScene();
-        physicsScene = SceneManager.CreateScene("PhysicsScene", new CreateSceneParameters(LocalPhysicsMode.Physics3D));
+        physicsScene = creator.physScene;
 
         PreparePhysicsScene();
     }
@@ -31,13 +35,13 @@ public class Trajectory : MonoBehaviour
     private void FixedUpdate()
     {
         ogpos = objectsToSpawn.transform.position;
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && item.attached == true)
         {
             lr.enabled = true;
             ShowTrajectory();
         } else
         {
-            lr.enabled = false;
+            //lr.enabled = false;
         }
 
         mainScene.GetPhysicsScene().Simulate(Time.fixedDeltaTime);

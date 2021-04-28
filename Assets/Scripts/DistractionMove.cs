@@ -5,6 +5,7 @@ using UnityEngine;
 public class DistractionMove : MonoBehaviour
 {
     bool inZone = false;
+    public bool attached = false;
     PlayerControl player;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class DistractionMove : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.C) && inZone == true)
         {
             player.setRB(gameObject.GetComponent<Rigidbody>());
+            attached = true;
         }
     }
 
