@@ -47,7 +47,7 @@ public class PlayerControl : MonoBehaviour
 
         if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
     }
 
