@@ -136,6 +136,8 @@ MonoBehaviour:
   patrolDistance: 5
   death: 0
   alarmTimer: 2
+  state: 1
+  followDir: {x: 0, y: 0, z: 0}
   maxFollowTimer: 3
   maxIdleTimer:
   - 3
@@ -245,27 +247,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 37e6450273e40be48a956b4c3e58cdc5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.70107996
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 37e6450273e40be48a956b4c3e58cdc5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.70107996
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 37e6450273e40be48a956b4c3e58cdc5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.70107996
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 37e6450273e40be48a956b4c3e58cdc5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.62
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 37e6450273e40be48a956b4c3e58cdc5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.22
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 37e6450273e40be48a956b4c3e58cdc5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.93
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 37e6450273e40be48a956b4c3e58cdc5, type: 3}
       propertyPath: m_LocalRotation.w
