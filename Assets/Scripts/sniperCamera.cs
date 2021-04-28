@@ -246,6 +246,7 @@ public class sniperCamera : MonoBehaviour
             Vector3 forward = transform.TransformDirection(Vector3.forward) * 10000;
             Vector3 RayDisjoint = new Vector3(transform.position.x - 5f, transform.position.y - 10f, transform.position.z);
 
+
             lRender.SetPosition(0, RayDisjoint);
 
             RaycastHit hit;

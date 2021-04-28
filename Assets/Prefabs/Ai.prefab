@@ -69,7 +69,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7954383723687692449}
-  - component: {fileID: 7954383723687692462}
   - component: {fileID: 7954383723687692451}
   - component: {fileID: 7954383723687692448}
   m_Layer: 0
@@ -96,14 +95,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7954383723687692462
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7954383723687692461}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!195 &7954383723687692451
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -113,7 +104,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7954383723687692461}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.03
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -144,6 +135,7 @@ MonoBehaviour:
   viewDetection: {fileID: 7954383723271914240}
   patrolDistance: 5
   death: 0
+  alarmTimer: 2
   maxFollowTimer: 3
   maxIdleTimer:
   - 3
