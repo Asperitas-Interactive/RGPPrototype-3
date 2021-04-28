@@ -41,6 +41,12 @@ public class PlayerControl : MonoBehaviour
             item.AddForce(new Vector3(0.0f, 15.0f, 0.0f), ForceMode.Impulse);
             item.AddForce(transform.forward * 5.0f, ForceMode.Impulse);
             item = null;
+
+        }
+
+        if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        {
+            SceneManager.LoadScene(2);
         }
     }
 

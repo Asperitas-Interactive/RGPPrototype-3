@@ -10,6 +10,7 @@ public class AIControl : MonoBehaviour
     public AudioDetection audioDetection;
     public ViewDetection viewDetection;
     Vector3 defaultPos;
+    Quaternion defaultRot;
     public float patrolDistance= 2.0f;
     enum State
     {
@@ -28,6 +29,8 @@ public class AIControl : MonoBehaviour
     void Start()
     {
         defaultPos = new Vector3();
+        defaultRot = new Quaternion();
+        defaultRot = transform.rotation;
         defaultPos = transform.position;
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.SetDestination((transform.forward * patrolDistance + transform.position));
@@ -42,6 +45,7 @@ public class AIControl : MonoBehaviour
         {
             state = State.patrol;
             agent.SetDestination(defaultPos);
+            
         }
 
         for (int i = 0;  i < audioDetection.HeardObjects.Count; i++)
@@ -71,6 +75,12 @@ public class AIControl : MonoBehaviour
             agent.transform.Rotate(0f, 180f, 0f);
             agent.SetDestination((transform.forward * patrolDistance + transform.position));
         }
+
+
+        else if(state == State.follow)
+        {
+            agent.SetDestination(followDir);
+        }
     }
 
 
@@ -84,6 +94,7 @@ public class AIControl : MonoBehaviour
         if(other.CompareTag("Diversion"))
         {
             state = State.follow;
+            followDir = other.transform.position;
             followTimer = maxFollowTimer;
         }
 
