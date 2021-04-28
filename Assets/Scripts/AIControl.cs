@@ -13,6 +13,7 @@ public class AIControl : MonoBehaviour
     Quaternion defaultRot;
     public float patrolDistance= 2.0f;
     public bool death = false;
+    public float alarmTimer = 2.0f;
     enum State
     {
         follow,
@@ -29,7 +30,8 @@ public class AIControl : MonoBehaviour
     public float[] maxIdleTimer = { 3.0f, 5.0f };
     bool rotate = false;
 
-
+    float watchTimer = 5.0f;
+    bool quit;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +54,12 @@ public class AIControl : MonoBehaviour
             transform.GetChild(2).GetComponent<Animator>().SetBool("death", true);
             return;
         }
+
+        watchTimer -= Time.deltaTime;
+
+        if (quit && watchTimer < 0.0f)
+            SceneManager.LoadScene(1);
+
         followTimer -= Time.deltaTime;
         idleTimer -= Time.deltaTime;
 
@@ -122,29 +130,30 @@ public class AIControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+
+
+
+    }
+
+    public void collision(Collider other)
+    {
         if (other.gameObject.tag == "Player")
         {
             SceneManager.LoadScene(1);
         }
 
-        if(other.CompareTag("Diversion"))
+        if (other.CompareTag("Diversion"))
         {
             state = State.follow;
             followDir = other.transform.position;
             followTimer = maxFollowTimer;
         }
 
-        if(other.gameObject.tag == "Dead")
+        if (other.gameObject.tag == "Dead")
         {
-            IEnumerator ExecuteAfterTime(float time = 2.0f)
-            {
-                yield return new WaitForSeconds(time);
-
-                SceneManager.LoadScene(1);
-            }
+            quit = true;
+            watchTimer = alarmTimer;
         }
-
-
-        
     }
 }

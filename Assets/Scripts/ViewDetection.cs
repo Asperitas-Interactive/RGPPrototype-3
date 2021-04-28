@@ -13,11 +13,11 @@ public class ViewDetection : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        SightedObjects.Add(other.gameObject);
+        GetComponentInParent<AIControl>().collision(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        SightedObjects.Remove(other.gameObject);
+
     }
 }

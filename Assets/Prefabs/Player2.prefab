@@ -108,7 +108,6 @@ Transform:
   m_Children:
   - {fileID: 2279969675877402669}
   - {fileID: 2279969677076567194}
-  - {fileID: 2279969676619848803}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -199,12 +198,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c9cd9263f2891b4aa20198f8c9037d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GunShot: {fileID: 0}
+  Scope: {fileID: 0}
+  Reload: {fileID: 0}
   sensitivity: 100
   layerIgnore:
     serializedVersion: 2
     m_Bits: 64
   zoomDistance: 30
   bulletCount: 8
+  reticle: {fileID: 0}
+  ammoUI: []
 --- !u!120 &1130020861
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -329,7 +333,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.06804085, y: -2.052332, z: 6.3422437}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2279969676619848803}
   m_Father: {fileID: 2279969675643533256}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -359,11 +364,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2279969676619848802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06999993, y: -0.148, z: 0.21000004}
+  m_LocalPosition: {x: -0.13804054, y: 1.9043322, z: -6.1322436}
   m_LocalScale: {x: 1.9193, y: 1.9193, z: 1.9193}
   m_Children: []
-  m_Father: {fileID: 2279969675643533256}
-  m_RootOrder: 2
+  m_Father: {fileID: 2279969675877402669}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2279969676619848801
 MonoBehaviour:

@@ -57,10 +57,14 @@ public class sniperCamera : MonoBehaviour
     float minRot = -180.0f;
     float maxRot = 0.0f;
 
+    Camera cam;
+
     // Start is called before the first frame update
     void Start()
     {
         defaultPos = new Vector3();
+
+        cam = transform.GetChild(0).GetComponent<Camera>();
 
         defaultPos = transform.position;
         lRender = gameObject.GetComponent<LineRenderer>();
@@ -72,7 +76,7 @@ public class sniperCamera : MonoBehaviour
 
     void recoil()
     {
-        transform.position += -transform.forward * 4.0f;
+        GetComponent<Animator>().SetBool("recoil", true);
         recoilTimer = 0.2f;
         resetRecoil = true;
     }
@@ -96,7 +100,7 @@ public class sniperCamera : MonoBehaviour
 
         if(resetRecoil && recoilTimer < 0.0f)
         {
-            transform.position -= -transform.forward * 4.0f;
+            GetComponent<Animator>().SetBool("recoil", false);
             resetRecoil = false;
         }
 
@@ -106,15 +110,15 @@ public class sniperCamera : MonoBehaviour
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0.0f)
         {
-            if (GetComponent<Camera>().fieldOfView > 6)
+            if (cam.fieldOfView > 4)
 
             {
-                GetComponent<Camera>().fieldOfView -= 200.0f * Time.deltaTime;
+                cam.fieldOfView -= 200.0f * Time.deltaTime;
 
             }
             else
             {
-                GetComponent<Camera>().fieldOfView = 6;
+                cam.fieldOfView = 4;
 
             }
 
@@ -126,15 +130,15 @@ public class sniperCamera : MonoBehaviour
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0.0f)
         {
-            if (GetComponent<Camera>().fieldOfView < 60)
+            if (cam.fieldOfView < 60)
 
             {
-                GetComponent<Camera>().fieldOfView += 200.0f * Time.deltaTime;
+                cam.fieldOfView += 200.0f * Time.deltaTime;
 
             }
             else
             {
-                GetComponent<Camera>().fieldOfView = 60;
+                cam.fieldOfView = 60;
 
             }
             if (Scope.isPlaying == false)
@@ -187,7 +191,7 @@ public class sniperCamera : MonoBehaviour
                 if (reloadTime <= 0.0f)
                 {
                     RaycastHit hit;
-                    Vector3 rayOrigin = transform.GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+                    Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
 
                     Vector3 forward = transform.TransformDirection(Vector3.forward) * 10000;
                     Debug.DrawRay(transform.position, forward, Color.green);
@@ -195,6 +199,8 @@ public class sniperCamera : MonoBehaviour
                     Debug.Log("fire");
                     if (Physics.Raycast(rayOrigin, transform.forward, out hit, 10000, ~layerIgnore))
                     {
+                        Debug.Log(hit.collider.gameObject);
+
                         if (hit.collider.isTrigger)
                         {
                             hit.collider.gameObject.GetComponent<AudioDetection>().hasHeard = true;
@@ -209,22 +215,24 @@ public class sniperCamera : MonoBehaviour
                             {
                                 ai.death = true;
                                 ai.tag = "Dead";
+                                ai.transform.GetChild(2).tag = "Dead";
                             }
                            else if(hit.collider.gameObject.transform.parent.TryGetComponent<AIStationary>(out aiS))
                             {
+                                aiS.transform.GetChild(0).tag = "Dead";
+
                                 aiS.death = true;
                                 aiS.tag = "Dead";
                             }
                         }
                     }
 
-                    Debug.Log(hit.collider.gameObject);
 
                     GunShot.Play();
 
                     ammoUI[bulletCount - 1].GetComponent<Image>().enabled = false;
                     bulletCount--;
-                    //GetComponent<Camera>().fieldOfView = 60;
+                    //camera.fieldOfView = 60;
                     reloadTime = 2.0f;
                     playReloadSound = true;
                     recoil();
@@ -236,12 +244,12 @@ public class sniperCamera : MonoBehaviour
         {
             lRender.enabled = true;
             Vector3 forward = transform.TransformDirection(Vector3.forward) * 10000;
-            Vector3 RayDisjoint = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
+            Vector3 RayDisjoint = new Vector3(transform.position.x - 5f, transform.position.y - 10f, transform.position.z);
 
             lRender.SetPosition(0, RayDisjoint);
 
             RaycastHit hit;
-            Vector3 rayOrigin = transform.GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+            Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
 
             if (Physics.Raycast(rayOrigin, transform.forward, out hit, 10000, ~layerIgnore))
             {
