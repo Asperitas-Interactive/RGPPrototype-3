@@ -109,6 +109,7 @@ Transform:
   m_Children:
   - {fileID: 2279969675877402669}
   - {fileID: 2279969677076567194}
+  - {fileID: 2279969676619848803}
   - {fileID: 4437287842311216450}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -141,10 +142,10 @@ Camera:
   field of view: 26.991467
   orthographic: 0
   orthographic size: 5
-  m_Depth: 9
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 183
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 1
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -607,7 +608,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4437287840962674255, guid: 586965dcdb807c04590d6179c0a8ca21, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4437287840962674255, guid: 586965dcdb807c04590d6179c0a8ca21, type: 3}
       propertyPath: m_LocalPosition.x
