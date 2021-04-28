@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1130020861}
   - component: {fileID: 1936256316}
   m_Layer: 0
-  m_Name: Player2
+  m_Name: SniperPlayer
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,6 @@ Transform:
   m_Children:
   - {fileID: 2279969675877402669}
   - {fileID: 2279969677076567194}
-  - {fileID: 2279969676619848803}
   - {fileID: 4437287842311216450}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -121,7 +120,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2279969675643533253}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -608,7 +607,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4437287840962674255, guid: 586965dcdb807c04590d6179c0a8ca21, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4437287840962674255, guid: 586965dcdb807c04590d6179c0a8ca21, type: 3}
       propertyPath: m_LocalPosition.x
