@@ -27,7 +27,7 @@ public class Trajectory : MonoBehaviour
     {
         Physics.autoSimulation = false;
         mainScene = SceneManager.GetActiveScene();
-        physicsScene = SceneManager.CreateScene("PhysicsScene", new CreateSceneParameters(LocalPhysicsMode.Physics3D));
+        physicsScene = creator.physScene;
 
         PreparePhysicsScene();
     }
@@ -37,7 +37,7 @@ public class Trajectory : MonoBehaviour
         ogpos = objectsToSpawn.transform.position;
         if (Input.GetKey(KeyCode.Space) && item.attached == true)
         {
-            //lr.enabled = true;
+            lr.enabled = true;
             ShowTrajectory();
         } else
         {
