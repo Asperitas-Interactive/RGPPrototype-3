@@ -12,37 +12,13 @@ public class PlayerControl : MonoBehaviour
 
     public Rigidbody item;
 
-    /*Scene PredictionScene;
-    PhysicsScene PredictionPhysScene;
-    Scene CurrentScene;
-    PhysicsScene CurrentPhysScene;
-    GameObject clone;
-    public LineRenderer lr;*/
-
+    private bool equip;
     private Vector3 Velocity = new Vector3(0.0f, 0.0f, 0.0f);
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
-
-        /*CreateSceneParameters parameters = new CreateSceneParameters(LocalPhysicsMode.Physics3D);
-        PredictionScene = SceneManager.CreateScene("PhysPredict", parameters);
-        PredictionPhysScene = PredictionScene.GetPhysicsScene();
-        CurrentScene = SceneManager.GetActiveScene();
-        CurrentPhysScene = CurrentScene.GetPhysicsScene();
-        Physics.autoSimulation = false;
-
-
-        if (clone == null)
-        {
-            Debug.Log("ah");
-            clone = Instantiate(this.gameObject);
-            SceneManager.MoveGameObjectToScene(clone, PredictionScene);
-        }
-
-        lr = GetComponent<LineRenderer>();
-        lr.positionCount = 100;*/
     }
 
     // Update is called once per frame
@@ -59,33 +35,20 @@ public class PlayerControl : MonoBehaviour
 
         controller.Move(Velocity * Time.deltaTime);
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) && item != null)
         {
             item.useGravity = true;
-            item.AddForce(new Vector3(0.0f, 10.0f, 0.0f), ForceMode.Impulse);
-            item.AddForce(transform.forward * 10.0f, ForceMode.Impulse);
+            item.AddForce(new Vector3(0.0f, 15.0f, 0.0f), ForceMode.Impulse);
+            item.AddForce(transform.forward * 5.0f, ForceMode.Impulse);
             item = null;
         }
     }
 
-    /*void FixedUpdate()
-    {
-        if (CurrentPhysScene.IsValid())
+    public void setRB(Rigidbody rb) {
+        if (item == null)
         {
-            CurrentPhysScene.Simulate(Time.fixedDeltaTime);
+            item = rb;
+            item.gameObject.transform.parent = gameObject.transform;
         }
-
-        Vector3 force = new Vector3(10.0f, 10.0f, 0.0f);
-
-        int Maxiteration = 100;
-
-        clone.transform.position = transform.position;
-        clone.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
-
-        for (int i = 0; i < Maxiteration; i++)
-        {
-            PredictionPhysScene.Simulate(Time.fixedDeltaTime);
-            lr.SetPosition(i, clone.transform.position);
-        }
-    }*/
+    }
 }

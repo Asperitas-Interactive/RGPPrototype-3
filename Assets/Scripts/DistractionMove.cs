@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DistractionMove : MonoBehaviour
 {
-    bool activated = false;
+    bool inZone = false;
+    PlayerControl player;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,23 +15,26 @@ public class DistractionMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(activated == true)
+        if(Input.GetKeyDown(KeyCode.C) && inZone == true)
         {
-            transform.Translate(Vector3.forward * 10 * Time.deltaTime, Space.World);
+            player.setRB(gameObject.GetComponent<Rigidbody>());
         }
     }
 
-    public void ActivateDistraction()
+    private void OnTriggerEnter(Collider collision)
     {
-        activated = true;
-        Debug.Log("ah");
+        if (collision.gameObject.tag == "Player")
+        {
+            inZone = true;
+            player = collision.gameObject.GetComponent<PlayerControl>();
+        }
     }
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.tag == "wall")
+        if (collision.gameObject.tag == "Player")
         {
-            activated = false;
+            inZone = false;
         }
     }
 }
