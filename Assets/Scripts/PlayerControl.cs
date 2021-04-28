@@ -42,6 +42,12 @@ public class PlayerControl : MonoBehaviour
             item.AddForce(transform.forward * 15.0f, ForceMode.Impulse);
             item.transform.SetParent(null);
             item = null;
+
+        }
+
+        if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        {
+            SceneManager.LoadScene(2);
         }
     }
 
