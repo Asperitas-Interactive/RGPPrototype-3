@@ -76,7 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c57a10f73628b747b54469dab7a537a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texts: []
+  texts:
+  - "Well I\u2019m glad that you lot were never going to give me up to these guys.
+    But yes I am fine."
 --- !u!1 &4316767135424551026
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +122,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c57a10f73628b747b54469dab7a537a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texts: []
+  texts:
+  - P1 to P2, do you copy? Over.
+  - Ah yea, ah certainly. Roger that. Moving!
+  - Hey how many guards did intel say there would be on duty at the moment?
+  - "Ok so I\u2019m looking at a roster for today and it looks like there is y guards
+    on\u2026\u2026\u2026"
+  - Ok let me try something.
+  - Rescue target located. Inspecting him now.
+  - I really did not expect to be rescuing you today. Are you ok? Are you hurt in
+    any way?
+  - We would never let you do--
+  - "Ah yea, ah right away\u2026.. Moving!"
+  - On it.
+  - "Shoot. It\u2019s locked."
+  - Hmmm, I wonder if I could use this in some way.
 --- !u!1 &4719954953948291475
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,4 +180,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c57a10f73628b747b54469dab7a537a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texts: []
+  texts:
+  - "This isn\u2019t training camp so you can forget all that radio gibberish. Just
+    focus on getting to the end of that hallway for now."
+  - "And keep your voice down. Whilst you\u2019re at it. We can\u2019t afford to
+    be heard on the way to the target."
+  - "Only x amount. That\u2019s why we didn\u2019t need to be guns blazing."
+  - S**t
+  - "There\u2019s three tangos in the opening around that corner. I can\u2019t take
+    them all out quick enough. You\u2019re going to need to create a distraction
+    of some sort."
+  - "You\u2019re clear to move. Nice job. But move quick."
+  - "Hold your position. The guards didn\u2019t notice. You\u2019re going to have
+    to try again."
+  - "Hold your position. The guards didn\u2019t notice. We\u2019re going to have
+    to try something else."
+  - "Crap. They must\u2019ve seen it get thrown. Hold tight for a moment."
+  - "Crap. It seems like they heard it but aren\u2019t moving. Hold on."
+  - "Roger that. I\u2019ll keep watch of the hallway."
+  - "What\u2019s going on in there? We need to move to exfil now!"
+  - Hey I see something on that desk over there that you could probably use to distract
+    those guards. Try to get to it.
+  - "I\u2019m out, reloading!"
+  - All out.
+  - "That\u2019s my last shot."
+  - Headshot!
+  - "Ohh, he\u2019s gonna feel that in the morning."
+  - Nice cock!
+  - "That\u2019s gotta hurt."
