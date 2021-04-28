@@ -10,6 +10,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     float speed, gravity;
 
+    public Rigidbody item;
+
     /*Scene PredictionScene;
     PhysicsScene PredictionPhysScene;
     Scene CurrentScene;
@@ -56,6 +58,14 @@ public class PlayerControl : MonoBehaviour
         Velocity.y += gravity * Time.deltaTime;
 
         controller.Move(Velocity * Time.deltaTime);
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            item.useGravity = true;
+            item.AddForce(new Vector3(0.0f, 10.0f, 0.0f), ForceMode.Impulse);
+            item.AddForce(transform.forward * 10.0f, ForceMode.Impulse);
+            item = null;
+        }
     }
 
     /*void FixedUpdate()
