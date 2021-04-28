@@ -199,12 +199,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c9cd9263f2891b4aa20198f8c9037d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GunShot: {fileID: 0}
+  Scope: {fileID: 0}
+  Reload: {fileID: 0}
   sensitivity: 100
   layerIgnore:
     serializedVersion: 2
     m_Bits: 64
   zoomDistance: 30
   bulletCount: 8
+  reticle: {fileID: 0}
+  ammoUI: []
 --- !u!120 &1130020861
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -224,7 +229,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 358fa5235d28cb543b2e316c27e3d26e, type: 2}
+  - {fileID: 2100000, guid: f732ff77116c6fd4aa7cd5f4025c1179, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
