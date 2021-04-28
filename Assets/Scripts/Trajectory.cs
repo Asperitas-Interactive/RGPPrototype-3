@@ -36,7 +36,7 @@ public class Trajectory : MonoBehaviour
         SceneManager.SetActiveScene(physicsScene);
         g = GameObject.Instantiate(objectsToSpawn);
         g.transform.name = "ReferenceItem";
-        g.GetComponent<DistractionItem>().isReference = true;
+        g.GetComponent<DistractionItem>().isReference = true; 
         Destroy(g.GetComponent<MeshRenderer>());
 
         SceneManager.SetActiveScene(mainScene);
