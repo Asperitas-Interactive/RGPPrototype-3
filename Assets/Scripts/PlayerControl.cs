@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     float speed, gravity;
 
+    public Rigidbody item;
+
+    private bool equip;
     private Vector3 Velocity = new Vector3(0.0f, 0.0f, 0.0f);
 
     // Start is called before the first frame update
@@ -30,13 +34,21 @@ public class PlayerControl : MonoBehaviour
         Velocity.y += gravity * Time.deltaTime;
 
         controller.Move(Velocity * Time.deltaTime);
+
+        if (Input.GetKeyUp(KeyCode.Space) && item != null)
+        {
+            item.useGravity = true;
+            item.AddForce(new Vector3(0.0f, 15.0f, 0.0f), ForceMode.Impulse);
+            item.AddForce(transform.forward * 5.0f, ForceMode.Impulse);
+            item = null;
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.GetComponent<DistractionMove>() != null)
+    public void setRB(Rigidbody rb) {
+        if (item == null)
         {
-            other.gameObject.GetComponent<DistractionMove>().ActivateDistraction();
+            item = rb;
+            item.gameObject.transform.parent = gameObject.transform;
         }
     }
 }
