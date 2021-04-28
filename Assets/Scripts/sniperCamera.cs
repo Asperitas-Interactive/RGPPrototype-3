@@ -202,7 +202,19 @@ public class sniperCamera : MonoBehaviour
                         }
                         if (hit.collider.CompareTag("Enemy"))
                         {
-                            Destroy(hit.collider.gameObject);
+                            AIControl ai;
+                            AIStationary aiS;
+                           
+                           if(hit.collider.gameObject.transform.parent.TryGetComponent<AIControl>(out ai))
+                            {
+                                ai.death = true;
+                                ai.tag = "Dead";
+                            }
+                           else if(hit.collider.gameObject.transform.parent.TryGetComponent<AIStationary>(out aiS))
+                            {
+                                aiS.death = true;
+                                aiS.tag = "Dead";
+                            }
                         }
                     }
 
@@ -225,8 +237,16 @@ public class sniperCamera : MonoBehaviour
             lRender.enabled = true;
             Vector3 forward = transform.TransformDirection(Vector3.forward) * 10000;
             Vector3 RayDisjoint = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
+
             lRender.SetPosition(0, RayDisjoint);
-            lRender.SetPosition(1, forward);
+
+            RaycastHit hit;
+            Vector3 rayOrigin = transform.GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+
+            if (Physics.Raycast(rayOrigin, transform.forward, out hit, 10000, ~layerIgnore))
+            {
+                lRender.SetPosition(1, hit.point);
+            }
         } else
         {
             lRender.enabled = false;
