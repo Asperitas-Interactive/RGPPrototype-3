@@ -40,6 +40,7 @@ public class PlayerControl : MonoBehaviour
             item.useGravity = true;
             item.AddForce(new Vector3(0.0f, 5.0f, 0.0f), ForceMode.Impulse);
             item.AddForce(transform.forward * 15.0f, ForceMode.Impulse);
+            item.transform.SetParent(null);
             item = null;
         }
     }
@@ -48,7 +49,7 @@ public class PlayerControl : MonoBehaviour
         if (item == null)
         {
             item = rb;
-            item.gameObject.transform.parent = gameObject.transform;
+            item.transform.SetParent(gameObject.transform);
         }
     }
 }
