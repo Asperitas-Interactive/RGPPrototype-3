@@ -23,7 +23,7 @@ public class Trajectory : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             ShowTrajectory();
         }

@@ -212,9 +212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fdf5fa16a473b42b31d74f0c652ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distraction: {fileID: 1732058593}
-  referenceDistraction: {fileID: 1732058594}
-  marker: {fileID: 6590530351221107305, guid: 34eb9ad4c3fc7a84d8120b3dbbaad76f, type: 3}
   objectsToSpawn: {fileID: 1732058593}
 --- !u!65 &1251581339
 BoxCollider:
@@ -388,11 +385,6 @@ Transform:
 --- !u!1 &1732058593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5849001565500103052, guid: e88107168bf4b3740ad006f81f29f8ff, type: 3}
-  m_PrefabInstance: {fileID: 807271034}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1732058594 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5849001565500103155, guid: e88107168bf4b3740ad006f81f29f8ff, type: 3}
   m_PrefabInstance: {fileID: 807271034}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1933010938
