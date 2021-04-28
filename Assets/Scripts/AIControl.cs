@@ -12,6 +12,7 @@ public class AIControl : MonoBehaviour
     Vector3 defaultPos;
     Quaternion defaultRot;
     public float patrolDistance= 2.0f;
+    public bool death = false;
     enum State
     {
         follow,
@@ -45,6 +46,12 @@ public class AIControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(gameObject.tag == "Dead")
+        {
+            agent.enabled = false;
+            transform.GetChild(2).GetComponent<Animator>().SetBool("death", true);
+            return;
+        }
         followTimer -= Time.deltaTime;
         idleTimer -= Time.deltaTime;
 
@@ -125,6 +132,16 @@ public class AIControl : MonoBehaviour
             state = State.follow;
             followDir = other.transform.position;
             followTimer = maxFollowTimer;
+        }
+
+        if(other.gameObject.tag == "Dead")
+        {
+            IEnumerator ExecuteAfterTime(float time = 2.0f)
+            {
+                yield return new WaitForSeconds(time);
+
+                SceneManager.LoadScene(1);
+            }
         }
 
 
