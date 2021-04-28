@@ -35,6 +35,9 @@ public class AIStationary : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (gameObject.tag == "Dead")
+            return;
+
         if (other.gameObject.tag == "Player")
         {
             SceneManager.LoadScene(1);
