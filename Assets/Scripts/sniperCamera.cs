@@ -202,7 +202,19 @@ public class sniperCamera : MonoBehaviour
                         }
                         if (hit.collider.CompareTag("Enemy"))
                         {
-                            Destroy(hit.collider.gameObject);
+                            AIControl ai;
+                            AIStationary aiS;
+                           
+                           if(hit.collider.gameObject.transform.parent.TryGetComponent<AIControl>(out ai))
+                            {
+                                ai.death = true;
+                                ai.tag = "Dead";
+                            }
+                           else if(hit.collider.gameObject.transform.parent.TryGetComponent<AIStationary>(out aiS))
+                            {
+                                aiS.death = true;
+                                aiS.tag = "Dead";
+                            }
                         }
                     }
 
