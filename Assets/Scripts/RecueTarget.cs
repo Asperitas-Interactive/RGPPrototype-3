@@ -7,6 +7,9 @@ public class RecueTarget : MonoBehaviour
 {
     private NavMeshAgent agent;
     private GameObject player;
+    public DialougeP1Control p1;
+    public DialougeP1Control p2;
+    public DialougeP1Control res;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,9 @@ public class RecueTarget : MonoBehaviour
             agent.enabled = true;
             player = other.gameObject;
             other.gameObject.GetComponent<PlayerControl>().SetWin();
+            p1.AssignText(5);
+            p2.AssignText(18);
+            res.AssignText(0);
         }
     }
 }
