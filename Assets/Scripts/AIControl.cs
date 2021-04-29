@@ -148,7 +148,7 @@ public class AIControl : MonoBehaviour
         {
             return;
         }
-            if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             SceneManager.LoadScene(2);
         }
