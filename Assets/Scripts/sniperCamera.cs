@@ -112,7 +112,7 @@ public class sniperCamera : MonoBehaviour
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0.0f)
         {
-            if (cam.fieldOfView > 4)
+            if (cam.fieldOfView > 6)
 
             {
                 cam.fieldOfView -= 200.0f * Time.deltaTime;
@@ -120,7 +120,7 @@ public class sniperCamera : MonoBehaviour
             }
             else
             {
-                cam.fieldOfView = 4;
+                cam.fieldOfView = 6;
 
             }
 
