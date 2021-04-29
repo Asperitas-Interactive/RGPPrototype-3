@@ -52,6 +52,7 @@ public class PlayerControl : MonoBehaviour
         if (item == null)
         {
             item = rb;
+            item.transform.position = gameObject.transform.position + transform.forward * 3.0f;
             item.transform.SetParent(gameObject.transform);
         }
     }

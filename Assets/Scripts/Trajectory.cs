@@ -23,7 +23,19 @@ public class Trajectory : MonoBehaviour
     {
         Physics.autoSimulation = false;
         mainScene = SceneManager.GetActiveScene();
-        physicsScene = SceneManager.CreateScene("PhysicsScene", new CreateSceneParameters(LocalPhysicsMode.Physics3D));
+
+        bool flag = false;
+        
+        foreach (Scene s in SceneManager.GetAllScenes())
+        {
+            if (s == SceneManager.GetSceneByName("physicsScene"))
+            {
+                physicsScene = SceneManager.GetSceneByName("physicsScene");
+                flag = true;
+            }
+        } 
+            if(!flag)
+             physicsScene = SceneManager.CreateScene("PhysicsScene", new CreateSceneParameters(LocalPhysicsMode.Physics3D));
 
         PreparePhysicsScene();
     }
