@@ -82053,6 +82053,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueController
       objectReference: {fileID: 0}
+    - target: {fileID: 1151499721518816080, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
+      propertyPath: texts.Array.data[5]
+      value: Rescue target located. Commencing Escort.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513661342980711213, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
+      propertyPath: texts.Array.data[18]
+      value: Target Found! Return to the Stairway and Leave!
+      objectReference: {fileID: 0}
     - target: {fileID: 6956276377413713544, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -90241,6 +90249,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 12971695, guid: 6695d2d549ecd064cb3f4d0bfcbaad3e, type: 3}
+      propertyPath: p1
+      value: 
+      objectReference: {fileID: 1616528517}
+    - target: {fileID: 12971695, guid: 6695d2d549ecd064cb3f4d0bfcbaad3e, type: 3}
+      propertyPath: p2
+      value: 
+      objectReference: {fileID: 1616528516}
+    - target: {fileID: 12971695, guid: 6695d2d549ecd064cb3f4d0bfcbaad3e, type: 3}
+      propertyPath: res
+      value: 
+      objectReference: {fileID: 2057617875}
     - target: {fileID: 3525866323311708954, guid: 6695d2d549ecd064cb3f4d0bfcbaad3e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -92637,6 +92657,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6441363014676347248, guid: 7edeb5bb556b50e4da09d4cd1c77cc3c, type: 3}
+--- !u!114 &2057617875 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4423161015242353425, guid: 95d89e282e831a749a91f48a1523b1dc, type: 3}
+  m_PrefabInstance: {fileID: 1616528515}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e8287a2c0c0b74bb874aa2b60ce589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2059477164
 GameObject:
   m_ObjectHideFlags: 0
