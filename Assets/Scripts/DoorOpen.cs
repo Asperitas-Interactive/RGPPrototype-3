@@ -1,44 +1,68 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DoorOpen : MonoBehaviour
 {
-    public AIControl LinkedEnemy;
-    public bool slomo = false;
+    //This code is from Prototype 1, but modified
+    private bool isOpening = false;
+    [SerializeField]
+    private bool bClockwise = true;
+    [SerializeField]
+    private BoxCollider bcTrigger;
+    private float fClockwiseComponent = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(bClockwise == true)
+        {
+            fClockwiseComponent = 1.0f;
+        } else
+        {
+            fClockwiseComponent = -1.0f;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (LinkedEnemy != null)
+        if(isOpening == true)
         {
-            if (LinkedEnemy.CompareTag("Dead"))
+            //Rotates based on if clockwise or counter clockwise
+            gameObject.transform.Rotate(0.0f, 150.0f * fClockwiseComponent * Time.deltaTime, 0.0f, 0f);
+        }
+
+        //Debug.Log(gameObject.transform.rotation.eulerAngles.y);
+
+        //Now checks for it its counter clock wise or clockwise
+        if (bClockwise == true)
+        {
+            if (gameObject.transform.rotation.eulerAngles.y >= 350.0f)
             {
-                GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().time(1.0f, 0.0f);
+                isOpening = false;
+            }
+        }
+        else
+        {
+            if (gameObject.transform.rotation.eulerAngles.y >= 180.0f)
+            {
+                isOpening = false;
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OpenDoor()
     {
-        if(other.CompareTag("Player"))
-        {
-            if (LinkedEnemy != null)
-            {
-                LinkedEnemy.dest = GameObject.FindGameObjectWithTag("Player");
-                LinkedEnemy.state = AIControl.State.follow;
-                LinkedEnemy.state = AIControl.State.patrol;
-                LinkedEnemy.state = AIControl.State.follow;
+        isOpening = true;
+        bcTrigger.enabled = false;
+    }
 
-            }
-            GetComponentInParent<Animator>().SetBool("Open", true);
-            //if(slomo)
-                //GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().time(0.1f, 5.0f);
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            OpenDoor();
         }
     }
 }
