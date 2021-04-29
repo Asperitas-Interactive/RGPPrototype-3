@@ -58,4 +58,11 @@ public class PlayerControl : MonoBehaviour
             item.transform.SetParent(gameObject.transform);
         }
     }
+
+    public void Teleport(Vector3 pos)
+    {
+        controller.enabled = false;
+        transform.position = pos;
+        controller.enabled = true;
+    }
 }
