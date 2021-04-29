@@ -15,9 +15,12 @@ public class DoorOpen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(LinkedEnemy.CompareTag("Dead"))
+        if (LinkedEnemy != null)
         {
-            GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().time(1.0f, 0.0f);
+            if (LinkedEnemy.CompareTag("Dead"))
+            {
+                GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().time(1.0f, 0.0f);
+            }
         }
     }
 
@@ -34,8 +37,8 @@ public class DoorOpen : MonoBehaviour
 
             }
             GetComponentInParent<Animator>().SetBool("Open", true);
-            if(slomo)
-                GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().time(0.1f, 5.0f);
+            //if(slomo)
+                //GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().time(0.1f, 5.0f);
         }
     }
 }

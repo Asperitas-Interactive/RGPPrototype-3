@@ -44,11 +44,6 @@ public class PlayerControl : MonoBehaviour
             item = null;
 
         }
-
-        if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
-        {
-            SceneManager.LoadScene(3);
-        }
     }
 
     public void setRB(Rigidbody rb) {
