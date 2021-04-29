@@ -91300,6 +91300,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 12971693, guid: 6695d2d549ecd064cb3f4d0bfcbaad3e, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 12971695, guid: 6695d2d549ecd064cb3f4d0bfcbaad3e, type: 3}
       propertyPath: p1
       value: 
