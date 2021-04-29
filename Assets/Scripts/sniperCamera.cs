@@ -56,8 +56,8 @@ public class sniperCamera : MonoBehaviour
     bool resetRecoil = false;
     float recoilTimer = 0.0f;
 
-    float minRot = -180.0f;
-    float maxRot = 0.0f;
+    float minRot = -130.0f;
+    float maxRot = -60.0f;
 
     Camera cam;
 
@@ -153,16 +153,16 @@ public class sniperCamera : MonoBehaviour
         {
             transform.position = new Vector3(63.5f, transform.position.y, 5.0f);
             yRot = -90.0f;
-            minRot = -180.0f;
-            maxRot = 0.0f;
+            minRot = -130.0f;
+            maxRot = -60.0f;
         }
 
         if (Input.GetButtonDown("SniperRight"))
         {
             transform.position = new Vector3(1.5f, transform.position.y, 64.0f);
             yRot = -180.0f;
-            minRot = -270.0f;
-            maxRot = -90.0f;
+            minRot = -210.0f;
+            maxRot = -150.0f;
         }
 
         //Idle Sway
