@@ -12,6 +12,8 @@ public class PlayerControl : MonoBehaviour
 
     public Rigidbody item;
 
+    public bool winCon = false;
+
     private bool equip;
     private Vector3 Velocity = new Vector3(0.0f, 0.0f, 0.0f);
 
@@ -59,5 +61,10 @@ public class PlayerControl : MonoBehaviour
         controller.enabled = false;
         transform.position = pos;
         controller.enabled = true;
+    }
+
+    public void SetWin()
+    {
+        winCon = true;
     }
 }
