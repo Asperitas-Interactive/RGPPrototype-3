@@ -122,7 +122,7 @@ public class AIControl : MonoBehaviour
 
         else if (state == State.follow)
         {
-            agent.SetDestination(followDir);
+            agent.SetDestination(dest.transform.GetChild(0).position);
         }
 
         if(state == State.idle)
@@ -144,7 +144,11 @@ public class AIControl : MonoBehaviour
 
     public void collision(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (gameObject.tag == "Dead")
+        {
+            return;
+        }
+            if (other.gameObject.tag == "Player")
         {
             SceneManager.LoadScene(2);
         }
