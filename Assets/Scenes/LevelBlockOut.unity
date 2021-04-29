@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1775,6 +1775,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c58c8f1332a85164b92c0c889a7a953f, type: 3}
+--- !u!1001 &112420421
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 377532246271803406, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
+      propertyPath: m_Name
+      value: DialogueController
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956276377413713544, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956276377413713544, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956276377413713544, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956276377413713544, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956276377413713544, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956276377413713544, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956276377413713544, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956276377413713544, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956276377413713544, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956276377413713544, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956276377413713544, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a760b86a4e5d7fa48947e6c137648fd6, type: 3}
 --- !u!1001 &114204717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8302,8 +8359,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 200, y: 0, z: 0}
+  - {x: 200, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -16349,7 +16406,9 @@ PrefabInstance:
       propertyPath: reticle
       value: 
       objectReference: {fileID: 1648705840}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2279969675643533257, guid: cd3fe1c9101b3f346ac46739b2f7dfa7, type: 3}
+    - {fileID: 2279969675643533259, guid: cd3fe1c9101b3f346ac46739b2f7dfa7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cd3fe1c9101b3f346ac46739b2f7dfa7, type: 3}
 --- !u!1001 &1081676850
 PrefabInstance:
@@ -29215,8 +29274,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 200, y: 0, z: 0}
+  - {x: 200, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
