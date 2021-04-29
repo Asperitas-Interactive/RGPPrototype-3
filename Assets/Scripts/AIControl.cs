@@ -34,6 +34,8 @@ public class AIControl : MonoBehaviour
     float watchTimer = 5.0f;
     bool quit;
 
+    public DialougeP1Control dialouge;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -155,6 +157,7 @@ public class AIControl : MonoBehaviour
             sw = true;
             followDir = other.transform.position;
             followTimer = maxFollowTimer;
+            dialouge.AssignText(5);
         }
 
         if (other.gameObject.tag == "Dead")

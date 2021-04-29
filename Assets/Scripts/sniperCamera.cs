@@ -9,6 +9,8 @@ public class sniperCamera : MonoBehaviour
     public AudioSource Scope;
     public AudioSource Reload;
 
+    public DialougeP1Control dialouge;
+
     [SerializeField]
     private float sensitivity = 100f;
 
@@ -216,6 +218,8 @@ public class sniperCamera : MonoBehaviour
                                 ai.death = true;
                                 ai.tag = "Dead";
                                 ai.transform.GetChild(2).tag = "Dead";
+
+                                dialouge.AssignText(19);
                             }
                            else if(hit.collider.gameObject.transform.parent.TryGetComponent<AIStationary>(out aiS))
                             {
@@ -223,6 +227,7 @@ public class sniperCamera : MonoBehaviour
 
                                 aiS.death = true;
                                 aiS.tag = "Dead";
+                                dialouge.AssignText(19);
                             }
                         }
                     }
@@ -232,11 +237,20 @@ public class sniperCamera : MonoBehaviour
 
                     ammoUI[bulletCount - 1].GetComponent<Image>().enabled = false;
                     bulletCount--;
+
+                    if(bulletCount == 0)
+                    {
+                        dialouge.AssignText(15);
+                    }
+
                     //camera.fieldOfView = 60;
                     reloadTime = 2.0f;
                     playReloadSound = true;
                     recoil();
                 }
+            } else
+            {
+                dialouge.AssignText(14);
             }
         }
 

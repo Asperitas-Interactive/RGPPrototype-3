@@ -6,6 +6,7 @@ public class DistractionMove : MonoBehaviour
 {
     bool inZone = false;
     PlayerControl player;
+    public DialougeP1Control dialouge;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class DistractionMove : MonoBehaviour
         {
             inZone = true;
             player = collision.gameObject.GetComponent<PlayerControl>();
+            dialouge.AssignText(11);
         }
     }
 
