@@ -205,11 +205,13 @@ public class sniperCamera : MonoBehaviour
 
                         if (hit.collider.isTrigger)
                         {
+                            Debug.Log("this is triggering");
                             hit.collider.gameObject.GetComponent<AudioDetection>().hasHeard = true;
                             Physics.Raycast(hit.point, transform.forward, out hit, 100);
                         }
                         if (hit.collider.CompareTag("Enemy"))
                         {
+                            Debug.Log("this is triggered");
                             AIControl ai;
                             AIStationary aiS;
                            
