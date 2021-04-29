@@ -59,7 +59,7 @@ public class Trajectory : MonoBehaviour
         g.GetComponent<Rigidbody>().useGravity = true;
         g.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, 5.0f, 0.0f), ForceMode.Impulse);
         g.GetComponent<Rigidbody>().AddForce(transform.forward * 15.0f, ForceMode.Impulse);
-
+        
         int steps = (int)(1f / Time.fixedDeltaTime);
         lr.positionCount = steps;
         for(int i = 0; i < steps; i++)
