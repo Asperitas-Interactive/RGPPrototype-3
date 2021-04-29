@@ -29099,6 +29099,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 947703569, guid: cd3fe1c9101b3f346ac46739b2f7dfa7, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 183
+      objectReference: {fileID: 0}
     - target: {fileID: 2279969675643533253, guid: cd3fe1c9101b3f346ac46739b2f7dfa7, type: 3}
       propertyPath: m_Name
       value: SniperPlayer
@@ -29163,7 +29167,9 @@ PrefabInstance:
       propertyPath: reticle
       value: 
       objectReference: {fileID: 1648705840}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2279969675643533257, guid: cd3fe1c9101b3f346ac46739b2f7dfa7, type: 3}
+    - {fileID: 2279969675643533259, guid: cd3fe1c9101b3f346ac46739b2f7dfa7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cd3fe1c9101b3f346ac46739b2f7dfa7, type: 3}
 --- !u!4 &1078070587 stripped
 Transform:
