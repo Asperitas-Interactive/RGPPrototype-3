@@ -198,6 +198,24 @@ public class sniperCamera : MonoBehaviour
                     Vector3 forward = transform.TransformDirection(Vector3.forward) * 10000;
                     Debug.DrawRay(transform.position, forward, Color.green);
 
+
+                    Debug.Log("i am running");
+
+                    GunShot.Play();
+
+                    ammoUI[bulletCount - 1].GetComponent<Image>().enabled = false;
+                    bulletCount--;
+
+                    if (bulletCount == 0)
+                    {
+                        dialouge.AssignText(15);
+                    }
+
+                    //camera.fieldOfView = 60;
+                    reloadTime = 2.0f;
+                    playReloadSound = true;
+                    recoil();
+
                     //Debug.Log("fire");
                     if (Physics.Raycast(rayOrigin, transform.forward, out hit, 10000, ~layerIgnore))
                     {
@@ -205,11 +223,13 @@ public class sniperCamera : MonoBehaviour
 
                         if (hit.collider.isTrigger)
                         {
+                            Debug.Log("this is triggering");
                             hit.collider.gameObject.GetComponent<AudioDetection>().hasHeard = true;
                             Physics.Raycast(hit.point, transform.forward, out hit, 100);
                         }
                         if (hit.collider.CompareTag("Enemy"))
                         {
+                            Debug.Log("this is triggered");
                             AIControl ai;
                             AIStationary aiS;
                            
@@ -231,23 +251,6 @@ public class sniperCamera : MonoBehaviour
                             }
                         }
                     }
-
-                    Debug.Log("i am running");
-
-                    GunShot.Play();
-
-                    ammoUI[bulletCount - 1].GetComponent<Image>().enabled = false;
-                    bulletCount--;
-
-                    if(bulletCount == 0)
-                    {
-                        dialouge.AssignText(15);
-                    }
-
-                    //camera.fieldOfView = 60;
-                    reloadTime = 2.0f;
-                    playReloadSound = true;
-                    recoil();
                 }
             } else
             {
