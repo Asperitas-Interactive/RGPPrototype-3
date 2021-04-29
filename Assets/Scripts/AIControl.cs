@@ -59,7 +59,7 @@ public class AIControl : MonoBehaviour
         watchTimer -= Time.deltaTime;
 
         if (quit && watchTimer < 0.0f)
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
 
         followTimer -= Time.deltaTime;
         idleTimer -= Time.deltaTime;
@@ -146,7 +146,7 @@ public class AIControl : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
 
         if (other.CompareTag("Diversion"))

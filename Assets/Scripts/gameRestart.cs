@@ -5,12 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class gameRestart : MonoBehaviour
 {
-     // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(0);
-        }
+        Cursor.lockState = CursorLockMode.None;
+    }
+    
+    public void quitGame()
+    {
+        Application.Quit();
+    }
+
+    public void returnToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void startGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }

@@ -47,7 +47,7 @@ public class PlayerControl : MonoBehaviour
 
         if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
     }
 
@@ -57,5 +57,12 @@ public class PlayerControl : MonoBehaviour
             item = rb;
             item.transform.SetParent(gameObject.transform);
         }
+    }
+
+    public void Teleport(Vector3 pos)
+    {
+        controller.enabled = false;
+        transform.position = pos;
+        controller.enabled = true;
     }
 }
