@@ -626,6 +626,7 @@ GameObject:
   - component: {fileID: 3958376579845761261}
   - component: {fileID: 1288216124341538289}
   - component: {fileID: 2645074319083916463}
+  - component: {fileID: 8913110249570378748}
   m_Layer: 0
   m_Name: DialogueBox_P1
   m_TagString: Untagged
@@ -691,6 +692,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8913110249570378748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3398770377268976844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e8287a2c0c0b74bb874aa2b60ce589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialouge: {fileID: 2410071079153252948}
+  holder: {fileID: 0}
+  textNum: 0
+  enable: 0
 --- !u!1 &3581484427900957088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1063,7 @@ GameObject:
   - component: {fileID: 2183326702599239826}
   - component: {fileID: 3618798935923841252}
   - component: {fileID: 8798574518630219473}
+  - component: {fileID: 4876594089928269738}
   m_Layer: 0
   m_Name: DialogueBox_P2
   m_TagString: Untagged
@@ -1111,6 +1129,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4876594089928269738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5440365673940518480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e8287a2c0c0b74bb874aa2b60ce589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialouge: {fileID: 6955124440809271922}
+  holder: {fileID: 0}
+  textNum: 0
+  enable: 0
 --- !u!1 &6212032041886965106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,6 +1278,7 @@ GameObject:
   - component: {fileID: 5023922647080391813}
   - component: {fileID: 7199716564264268180}
   - component: {fileID: 5311678184123685605}
+  - component: {fileID: 4423161015242353425}
   m_Layer: 0
   m_Name: DialogueBox_RescueTarget
   m_TagString: Untagged
@@ -1309,6 +1344,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4423161015242353425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608431887451544571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e8287a2c0c0b74bb874aa2b60ce589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialouge: {fileID: 7158657298747013627}
+  holder: {fileID: 0}
+  textNum: 0
+  enable: 0
 --- !u!1 &7314092393626912342
 GameObject:
   m_ObjectHideFlags: 0
