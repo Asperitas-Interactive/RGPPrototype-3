@@ -7,6 +7,10 @@ public class DialougeP1Control : MonoBehaviour
 {
     public Text dialouge;
     public TextHolder holder;
+    public int textNum = 0;
+    public bool enable = false;
+
+    private float enabledTimer = 5.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +20,26 @@ public class DialougeP1Control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dialouge.text = holder.texts[0];
+        enabledTimer -= Time.deltaTime;
+
+        if(enabledTimer <= 0.0f)
+        {
+            enable = false;
+        }
+
+        if (enable)
+        {
+            dialouge.text = holder.texts[textNum];
+        } else
+        {
+            dialouge.text = "";
+        }
+    }
+
+    public void AssignText(int newText)
+    {
+        textNum = newText;
+        enable = true;
+        enabledTimer = 5.0f;
     }
 }
