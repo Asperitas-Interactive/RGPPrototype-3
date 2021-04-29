@@ -198,10 +198,10 @@ public class sniperCamera : MonoBehaviour
                     Vector3 forward = transform.TransformDirection(Vector3.forward) * 10000;
                     Debug.DrawRay(transform.position, forward, Color.green);
 
-                    Debug.Log("fire");
+                    //Debug.Log("fire");
                     if (Physics.Raycast(rayOrigin, transform.forward, out hit, 10000, ~layerIgnore))
                     {
-                        Debug.Log(hit.collider.gameObject);
+                        //Debug.Log(hit.collider.gameObject);
 
                         if (hit.collider.isTrigger)
                         {
@@ -232,6 +232,7 @@ public class sniperCamera : MonoBehaviour
                         }
                     }
 
+                    Debug.Log("i am running");
 
                     GunShot.Play();
 
